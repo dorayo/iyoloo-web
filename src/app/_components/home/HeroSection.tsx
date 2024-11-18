@@ -115,13 +115,14 @@ const HeroSection = () => {
         </div>
       </div>
       
+      {/* 能量射线系统 */}
       <div className="absolute inset-0 flex items-center justify-center">
         {/* 外层能量场 */}
         <div className="absolute w-[120%] h-[120%] animate-spin-slow opacity-30">
           {[...Array(8)].map((_, i) => (
             <div
               key={i}
-              className="absolute top-1/2 left-1/2 w-1 h-40 bg-gradient-to-t from-[#FF6B95] to-transparent origin-bottom animate-pulse-slow"
+              className="absolute top-1/2 left-1/2 w-1 h-40 bg-gradient-to-t from-[#8B5CF6] to-transparent origin-bottom"
               style={{
                 transform: `rotate(${i * 45}deg) translateX(-50%)`,
               }}
@@ -134,7 +135,7 @@ const HeroSection = () => {
           {[...Array(12)].map((_, i) => (
             <div
               key={i}
-              className="absolute top-1/2 left-1/2 w-0.5 h-32 bg-gradient-to-t from-[#B44AC0] to-transparent origin-bottom animate-pulse"
+              className="absolute top-1/2 left-1/2 w-0.5 h-32 bg-gradient-to-t from-[#4F46E5] to-transparent origin-bottom"
               style={{
                 transform: `rotate(${i * 30}deg) translateX(-50%)`,
               }}
