@@ -118,7 +118,7 @@ const HeroSection = () => {
       {/* 能量射线系统 */}
       <div className="absolute inset-0 flex items-center justify-center">
         {/* 外层能量场 */}
-        <div className="absolute w-[120%] h-[120%] animate-spin-slow opacity-30">
+        <div className="absolute w-[120%] h-[120%] animate-spin-slow opacity-20">
           {[...Array(8)].map((_, i) => (
             <div
               key={i}
@@ -131,7 +131,7 @@ const HeroSection = () => {
         </div>
         
         {/* 中层能量场 */}
-        <div className="absolute w-[90%] h-[90%] animate-spin-reverse-slow opacity-40">
+        <div className="absolute w-[90%] h-[90%] animate-spin-reverse-slow opacity-15">
           {[...Array(12)].map((_, i) => (
             <div
               key={i}
@@ -169,7 +169,7 @@ const HeroSection = () => {
                 C275 250 300 200 350 175
                 C400 150 500 150 600 200
                 Z"
-              strokeWidth="3"
+              strokeWidth="0"
               stroke="url(#wing-gradient)"
               fill="url(#wing-gradient)"
               fillOpacity="0.2"
@@ -230,7 +230,7 @@ const HeroSection = () => {
                     ${300 + i * 40} ${350 + i * 40} 
                     ${320 + i * 40} ${380 + i * 40}`}
                 stroke="url(#wing-gradient)"
-                strokeWidth="2"
+                strokeWidth="0"
                 initial={{ opacity: 0 }}
                 animate={{ 
                   opacity: [0, 0.5, 0],
@@ -271,7 +271,7 @@ const HeroSection = () => {
                 C925 250 900 200 850 175
                 C800 150 700 150 600 200
                 Z"
-              strokeWidth="3"
+              strokeWidth="0"
               stroke="url(#wing-gradient)"
               fill="url(#wing-gradient)"
               fillOpacity="0.2"
@@ -332,7 +332,7 @@ const HeroSection = () => {
                     ${900 - i * 40} ${350 + i * 40} 
                     ${880 - i * 40} ${380 + i * 40}`}
                 stroke="url(#wing-gradient)"
-                strokeWidth="2"
+                strokeWidth="0"
                 initial={{ opacity: 0 }}
                 animate={{ 
                   opacity: [0, 0.5, 0],
