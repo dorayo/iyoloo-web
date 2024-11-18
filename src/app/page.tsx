@@ -3,6 +3,7 @@ import HeroSection from "./_components/home/HeroSection"
 import ValuesSection from "./_components/home/ValuesSection";
 import TargetUsersSection from "./_components/home/TargetUsersSection";
 import FeaturesSection from "./_components/home/FeaturesSection";
+import MembershipBenefitsSection from "./_components/home/MembershipBenefitsSection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <ValuesSection />
       <TargetUsersSection />
       <FeaturesSection />
+      <MembershipBenefitsSection />
     </main>
   );
 }
