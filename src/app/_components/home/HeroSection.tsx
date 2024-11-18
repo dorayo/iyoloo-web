@@ -46,18 +46,18 @@ const HeroSection = () => {
             >
               <defs>
                 <linearGradient id="heart-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#8B5CF6">
+                  <stop offset="0%" stopColor="#FF6B95"> // 温暖的粉色
                     <animate
                       attributeName="stop-color"
-                      values="#8B5CF6; #4F46E5; #8B5CF6"
+                      values="#FF6B95; #FF89B1; #FF6B95"  // 粉色系渐变
                       dur="4s"
                       repeatCount="indefinite"
                     />
                   </stop>
-                  <stop offset="100%" stopColor="#4F46E5">
+                  <stop offset="100%" stopColor="#B44AC0"> // 柔和的紫色
                     <animate
                       attributeName="stop-color"
-                      values="#4F46E5; #8B5CF6; #4F46E5"
+                      values="#B44AC0; #FF6B95; #B44AC0"
                       dur="4s"
                       repeatCount="indefinite"
                     />
@@ -121,7 +121,7 @@ const HeroSection = () => {
           {[...Array(8)].map((_, i) => (
             <div
               key={i}
-              className="absolute top-1/2 left-1/2 w-1 h-40 bg-gradient-to-t from-[#8B5CF6] to-transparent origin-bottom"
+              className="absolute top-1/2 left-1/2 w-1 h-40 bg-gradient-to-t from-[#FF6B95] to-transparent origin-bottom animate-pulse-slow"
               style={{
                 transform: `rotate(${i * 45}deg) translateX(-50%)`,
               }}
@@ -134,7 +134,7 @@ const HeroSection = () => {
           {[...Array(12)].map((_, i) => (
             <div
               key={i}
-              className="absolute top-1/2 left-1/2 w-0.5 h-32 bg-gradient-to-t from-[#4F46E5] to-transparent origin-bottom"
+              className="absolute top-1/2 left-1/2 w-0.5 h-32 bg-gradient-to-t from-[#B44AC0] to-transparent origin-bottom animate-pulse"
               style={{
                 transform: `rotate(${i * 30}deg) translateX(-50%)`,
               }}
@@ -366,23 +366,23 @@ const HeroSection = () => {
               id="wing-gradient"
               x1="0"
               y1="0"
-              x2="1200"
-              y2="800"
+              x2="800"
+              y2="600"
               gradientUnits="userSpaceOnUse"
             >
-              <stop offset="0%" stopColor="#8B5CF6">
+              <stop offset="0%" stopColor="#FFA3C4"> // 更亮的粉色
                 <animate
                   attributeName="stop-color"
-                  values="#8B5CF6; #FFFFFF; #8B5CF6"
-                  dur="4s"
+                  values="#FFA3C4; #FFFFFF; #FFA3C4" // 加入白色过渡，增加光芒感
+                  dur="3s"
                   repeatCount="indefinite"
                 />
               </stop>
-              <stop offset="100%" stopColor="#4F46E5">
+              <stop offset="100%" stopColor="#B44AC0"> // 保持和心形一致的紫色
                 <animate
                   attributeName="stop-color"
-                  values="#4F46E5; #8B5CF6; #4F46E5"
-                  dur="4s"
+                  values="#B44AC0; #FF6B95; #B44AC0"
+                  dur="3s"
                   repeatCount="indefinite"
                 />
               </stop>
@@ -446,6 +446,16 @@ const HeroSection = () => {
 // 添加所有需要的动画样式
 const style = document.createElement('style');
 style.textContent = `
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes spin-reverse-slow {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+
   @keyframes float {
     0%, 100% {
       transform: translate(0, 0);
@@ -479,6 +489,14 @@ style.textContent = `
   
   .animate-heartbeat {
     animation: heartbeat 2s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  .animate-spin-reverse-slow {
+    animation: spin-reverse-slow 15s linear infinite;
   }
 `;
 document.head.appendChild(style);
