@@ -6,6 +6,7 @@ import FeaturesSection from "./_components/home/FeaturesSection";
 import MembershipBenefitsSection from "./_components/home/MembershipBenefitsSection";
 import SecuritySection from "./_components/home/SecuritySection";
 import CTASection from "./_components/home/CTASection";
+import Footer from "./_components/layout/Footer"
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <MembershipBenefitsSection />
       <SecuritySection />
       <CTASection />
+      <Footer />
     </main>
   );
 }
