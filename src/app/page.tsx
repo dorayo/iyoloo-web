@@ -5,6 +5,7 @@ import TargetUsersSection from "./_components/home/TargetUsersSection";
 import FeaturesSection from "./_components/home/FeaturesSection";
 import MembershipBenefitsSection from "./_components/home/MembershipBenefitsSection";
 import SecuritySection from "./_components/home/SecuritySection";
+import CTASection from "./_components/home/CTASection";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <FeaturesSection />
       <MembershipBenefitsSection />
       <SecuritySection />
+      <CTASection />
     </main>
   );
 }
