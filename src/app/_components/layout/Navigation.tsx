@@ -3,19 +3,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
-// Logo组件
-const LogoIcon = () => {
-  return (
-    <div className="w-9 h-9">
-      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" className="fill-[#2D1B69]" />
-        <circle cx="20" cy="20" r="16" className="stroke-white/10" strokeWidth="0.5" />
-        <path d="M19 12h2v3h-2zM19 17h2v11h-2z" className="fill-white" />
-        <circle cx="20" cy="20" r="1" className="fill-white/30" />
-      </svg>
-    </div>
-  );
-};
+import LogoIcon from '../home/LogoIcon';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
