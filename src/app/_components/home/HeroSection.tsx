@@ -27,30 +27,6 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1a103f] to-[#2D1B69]">
       {/* 星空背景 */}
       <div className="absolute inset-0">
-        {/* 静态星星 */}
-        {/* {stars.map((star, i) => (
-          <motion.div
-            key={i}
-            className="absolute"
-            style={{
-              left: star.x + '%',
-              top: star.y + '%',
-            }}
-            animate={{
-              opacity: [0.2, 0.8, 0.2],
-              scale: [1, 1.2, 1],
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: star.duration,
-              repeat: Infinity,
-              delay: star.delay,
-            }}
-          >
-            <StarSVG size={star.size * 4} />
-          </motion.div>
-        ))} */}
-
         {/* 流星 */}
         {shootingStars.map((star, i) => (
           <motion.div
@@ -60,16 +36,6 @@ const HeroSection = () => {
               background: 'white',
               boxShadow: '0 0 4px 1px rgba(255, 255, 255, 0.4)',
               left: star.x + '%',
-              filter: 'blur(0.5px)',
-            }}
-            before={{
-              content: '""',
-              position: 'absolute',
-              width: '60px',
-              height: '1px',
-              background: 'linear-gradient(90deg, white, transparent)',
-              transform: 'translateX(-100%)',
-              transformOrigin: 'right',
             }}
             animate={{
               top: ['-5%', '105%'],
@@ -81,8 +47,7 @@ const HeroSection = () => {
               repeat: Infinity,
               delay: star.delay * 3,
               ease: 'linear'
-            }}
-          />
+            }} />
         ))}
         {/* 星云效果 */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/5 via-transparent to-transparent animate-pulse-slow" />
