@@ -10,7 +10,7 @@ import Footer from "./_components/layout/Footer"
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen">
+    <main className="relative min-h-screen overflow-x-hidden">
       <Navigation />
       <HeroSection />
       <ValuesSection />
