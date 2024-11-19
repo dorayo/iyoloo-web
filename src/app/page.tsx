@@ -7,12 +7,14 @@ import MembershipBenefitsSection from "./_components/home/MembershipBenefitsSect
 import SecuritySection from "./_components/home/SecuritySection";
 import CTASection from "./_components/home/CTASection";
 import Footer from "./_components/layout/Footer"
+import PhilosophySection from "./_components/home/PhilosophySection";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden">
       <Navigation />
       <HeroSection />
+      <PhilosophySection />
       <ValuesSection />
       <TargetUsersSection />
       <FeaturesSection />
