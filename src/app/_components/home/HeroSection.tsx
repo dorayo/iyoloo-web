@@ -406,7 +406,7 @@ const HeroSection = () => {
         >
           <span className="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm
             text-white/90 text-lg md:text-xl font-medium">
-            World's First Premium Social Platform for Single-by-Choice Community
+            World&apos;s First Premium Social Platform for Single-by-Choice Community
           </span>
         </motion.div>
         {/* 文字内容 */}
