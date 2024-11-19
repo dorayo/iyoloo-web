@@ -55,7 +55,7 @@ const ValuesSection = () => {
       
       {/* Background Decoration */}
       <div className="absolute inset-0">
-        {[...Array(3)].map((_, i) => (
+        {Array.from({ length: 3 }, (_, i) => (
           <div
             key={i}
             className="absolute w-64 h-64 bg-gradient-to-r from-[#8B5CF6]/5 to-[#4F46E5]/5 rounded-full blur-3xl"

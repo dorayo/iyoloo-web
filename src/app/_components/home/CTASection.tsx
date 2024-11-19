@@ -28,7 +28,7 @@ const CTASection = () => {
           from-white/10 via-transparent to-transparent" />
         
         {/* Animated Stars */}
-        {[...Array(50)].map((_, i) => (
+        {Array.from({ length: 50 }, (_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-white/30 rounded-full"
@@ -51,7 +51,7 @@ const CTASection = () => {
 
         {/* Energy Lines */}
         <div className="absolute inset-0">
-          {[...Array(5)].map((_, i) => (
+          {Array.from({ length: 5 }, (_, i) => (
             <motion.div
               key={i}
               className="absolute h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent"

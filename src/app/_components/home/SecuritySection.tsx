@@ -203,7 +203,7 @@ const SecuritySection = () => {
                 
                 {/* Security Lines Animation */}
                 <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  {[...Array(3)].map((_, i) => (
+                  {Array.from({ length: 3 }, (_, i) => (
                     <motion.div
                       key={i}
                       className="absolute h-px bg-[#2D1B69]/10"

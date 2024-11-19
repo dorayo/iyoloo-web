@@ -8,7 +8,7 @@ const HeroSection = () => {
       {/* 背景动态效果 */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#8B5CF6]/10 via-transparent to-transparent animate-pulse-slow" />
-        {[...Array(30)].map((_, i) => (
+        {Array.from({ length: 30 }, (_, i) => (
           <div
             key={i}
             className="absolute bg-white/30 rounded-full"
@@ -46,7 +46,7 @@ const HeroSection = () => {
             >
               <defs>
                 <linearGradient id="heart-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#FF6B95"> // 温暖的粉色
+                  <stop offset="0%" stopColor="#FF6B95"> 
                     <animate
                       attributeName="stop-color"
                       values="#FF6B95; #FF89B1; #FF6B95"  // 粉色系渐变
@@ -54,7 +54,7 @@ const HeroSection = () => {
                       repeatCount="indefinite"
                     />
                   </stop>
-                  <stop offset="100%" stopColor="#B44AC0"> // 柔和的紫色
+                  <stop offset="100%" stopColor="#B44AC0">
                     <animate
                       attributeName="stop-color"
                       values="#B44AC0; #FF6B95; #B44AC0"
@@ -92,7 +92,7 @@ const HeroSection = () => {
           </motion.div>
           
           {/* 能量光环 */}
-          {[...Array(3)].map((_, i) => (
+          {Array.from({ length: 3 }, (_, i) => (
             <motion.div
               key={i}
               className="absolute inset-0 rounded-full"
@@ -119,7 +119,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 flex items-center justify-center">
         {/* 外层能量场 */}
         <div className="absolute w-[120%] h-[120%] animate-spin-slow opacity-20">
-          {[...Array(8)].map((_, i) => (
+          {Array.from({ length: 8 }, (_, i) => (
             <div
               key={i}
               className="absolute top-1/2 left-1/2 w-1 h-40 bg-gradient-to-t from-[#8B5CF6] to-transparent origin-bottom"
@@ -132,7 +132,7 @@ const HeroSection = () => {
         
         {/* 中层能量场 */}
         <div className="absolute w-[90%] h-[90%] animate-spin-reverse-slow opacity-15">
-          {[...Array(12)].map((_, i) => (
+          {Array.from({ length: 12 }, (_, i) => (
             <div
               key={i}
               className="absolute top-1/2 left-1/2 w-0.5 h-32 bg-gradient-to-t from-[#4F46E5] to-transparent origin-bottom"
@@ -222,7 +222,7 @@ const HeroSection = () => {
             />
             
             {/* 左翼羽毛装饰 */}
-            {[...Array(7)].map((_, i) => (
+            {Array.from({ length: 7 }, (_, i) => (
               <motion.path
                 key={`left-feather-${i}`}
                 d={`M${350 + i * 40} ${300 + i * 40} 
@@ -324,7 +324,7 @@ const HeroSection = () => {
             />
             
             {/* 右翼羽毛装饰 */}
-            {[...Array(7)].map((_, i) => (
+            {Array.from({ length: 7 }, (_, i) => (
               <motion.path
                 key={`right-feather-${i}`}
                 d={`M${850 - i * 40} ${300 + i * 40} 
@@ -371,7 +371,7 @@ const HeroSection = () => {
               y2="600"
               gradientUnits="userSpaceOnUse"
             >
-              <stop offset="0%" stopColor="#FFA3C4"> // 更亮的粉色
+              <stop offset="0%" stopColor="#FFA3C4">
                 <animate
                   attributeName="stop-color"
                   values="#FFA3C4; #FFFFFF; #FFA3C4" // 加入白色过渡，增加光芒感
@@ -379,7 +379,7 @@ const HeroSection = () => {
                   repeatCount="indefinite"
                 />
               </stop>
-              <stop offset="100%" stopColor="#B44AC0"> // 保持和心形一致的紫色
+              <stop offset="100%" stopColor="#B44AC0">
                 <animate
                   attributeName="stop-color"
                   values="#B44AC0; #FF6B95; #B44AC0"

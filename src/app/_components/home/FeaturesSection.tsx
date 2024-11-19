@@ -82,7 +82,7 @@ const FeaturesSection = () => {
         
         {/* Geometric Patterns */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(3)].map((_, i) => (
+          {Array.from({ length: 3 }, (_, i) => (
             <svg
               key={i}
               className="absolute text-[#8B5CF6]/5"

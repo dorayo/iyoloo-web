@@ -86,7 +86,7 @@ const MembershipSection = () => {
           from-white/5 via-transparent to-transparent" />
         
         {/* Animated Light Beams */}
-        {[...Array(5)].map((_, i) => (
+        {Array.from({ length: 5 }, (_, i) => (
           <motion.div
             key={i}
             className="absolute h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
