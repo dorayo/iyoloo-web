@@ -5,9 +5,14 @@ import { type Metadata } from "next";
 import { TRPCReactProvider } from "~/trpc/react";
 import { PropsWithChildren } from "react";
 
+// export const metadata = {
+//   title: 'iyoloo - 遇见心灵伴侣',
+//   description: '面向不婚主义者的高端社交平台，让每个人都能找到志同道合的伴侣，共创理想生活。',
+// }
+
 export const metadata = {
-  title: 'iyoloo - 遇见心灵伴侣',
-  description: '面向不婚主义者的高端社交平台，让每个人都能找到志同道合的伴侣，共创理想生活。',
+  title: 'iyoloo - Meet Your Soulmate',
+  description: 'A premium social platform for those single by choice, designed to connect like-minded individuals and co-create their ideal lifestyle.',
 }
 
 // export default function RootLayout({

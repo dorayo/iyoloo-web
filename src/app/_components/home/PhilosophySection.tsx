@@ -44,7 +44,7 @@ const PhilosophySection = () => {
           <div className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl">
             <Quote className="absolute -top-6 -left-6 w-12 h-12 text-[#8B5CF6]" />
             <blockquote className="text-2xl md:text-3xl font-light italic text-white text-center mb-4">
-              "True happiness comes from making authentic choices, not from meeting others' expectations."
+            &quot;True happiness comes from making authentic choices, not from meeting others&#39; expectations.&quot;
             </blockquote>
             <p className="text-right text-lg text-white/80">— Simone de Beauvoir</p>
           </div>
