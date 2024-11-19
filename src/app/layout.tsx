@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
+import { PropsWithChildren } from "react";
 
 export const metadata = {
   title: 'iyoloo - 遇见心灵伴侣',
