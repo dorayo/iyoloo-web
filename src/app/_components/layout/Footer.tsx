@@ -26,7 +26,7 @@ const Footer = () => {
           
           {/* Brand Statement */}
           <p className="text-white/70 text-center max-w-md">
-            Because You Only Live Once — Define Life on Your Terms
+            You Only Live Once — Define Life on Your Terms
           </p>
           
           {/* Links */}
