@@ -1,7 +1,5 @@
 import "~/styles/globals.css";
-import {
-  ClerkProvider
-} from '@clerk/nextjs'
+import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
@@ -26,12 +24,20 @@ export const metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body className="min-h-screen bg-white font-sans">
-      <ClerkProvider>
-        {children}
-      </ClerkProvider>
-      </body>
+      <header>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </header>
+        <main>{children}</main>
+        </body>
     </html>
+    </ClerkProvider>
   );
 }
