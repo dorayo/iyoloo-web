@@ -98,7 +98,7 @@ const HeroSection = () => {
             bg-white/[0.03] backdrop-blur-md
             border border-white/10 shadow-2xl">
             <span className="text-white/90 text-lg tracking-wide">
-              World's First Premium Social Platform for Single-by-Choice Community
+              World&#39;s First Premium Social Platform for Single-by-Choice Community
             </span>
           </div>
         </motion.div>
