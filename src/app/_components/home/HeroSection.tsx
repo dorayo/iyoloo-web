@@ -87,6 +87,21 @@ const HeroSection = () => {
 
       {/* 核心内容区 */}
       <div className="relative z-[2] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20"> 
+        {/* Platform Introduction - 新增部分 */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="mb-16"  // 调整与主标题的间距
+        >
+          <div className="inline-block px-6 py-3 rounded-full 
+            bg-white/[0.03] backdrop-blur-md
+            border border-white/10 shadow-2xl">
+            <span className="text-white/90 text-lg tracking-wide">
+              World's First Premium Social Platform for Single-by-Choice Community
+            </span>
+          </div>
+        </motion.div>
         {/* 主标题区域 */}
         <div className="flex flex-col items-center justify-center gap-8">
           <motion.div
