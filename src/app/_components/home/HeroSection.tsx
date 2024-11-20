@@ -64,18 +64,7 @@ const HeroSection = () => {
                 background: 'white',
                 boxShadow: '0 0 3px 1px rgba(255, 255, 255, 0.5)',
                 top: '-10%',
-                left: star.x + '%',
-                '&::after': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100px',
-                  height: '1px',
-                  background: `linear-gradient(${angle}deg, white, transparent)`,
-                  transform: `rotate(${angle}deg)`,
-                  transformOrigin: 'left top'
-                }
+                left: star.x + '%'
               }}
               animate={{
                 top: ['-10%', '120%'],

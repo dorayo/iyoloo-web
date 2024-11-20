@@ -104,7 +104,7 @@ const ElitePortraitsSection = () => {
   const stars = generateStars(50);
 
   return (
-    <section className="relative py-24 bg-gradient-to-b from-[#1a103f] to-[#2D1B69] overflow-hidden">
+    <section className="relative py-24 bg-gradient-to-b from-[#1a103f] to-[#2D1B69] overflow-hidden" id="elite">
       {/* 星空背景 */}
       <div className="absolute inset-0">
         {stars.map((star, i) => (

@@ -27,7 +27,7 @@ const PhilosophySection = () => {
   ];
 
   return (
-    <section className="relative py-24 bg-[#2D1B69] overflow-hidden">
+    <section className="relative py-24 bg-[#2D1B69] overflow-hidden" id="philosophy">
       {/* Background glow */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
