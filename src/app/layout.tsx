@@ -1,3 +1,4 @@
+import { poppins, notoSansSC, notoSansJP } from './fonts'
 import "~/styles/globals.css";
 
 import { type Metadata } from "next";
@@ -29,8 +30,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
-      <body className="min-h-screen overflow-x-hidden  bg-white font-sans">
+    <html lang="en" className={`${poppins.variable} ${notoSansSC.variable} ${notoSansJP.variable}`}>
+      <body className="min-h-screen overflow-x-hidden font-sans">
         {children}
       </body>
     </html>

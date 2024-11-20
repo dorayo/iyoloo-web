@@ -97,7 +97,7 @@ const HeroSection = () => {
           <div className="inline-block px-6 py-3 rounded-full 
             bg-white/[0.03] backdrop-blur-md
             border border-white/10 shadow-2xl">
-            <span className="text-white/90 text-lg tracking-wide">
+            <span className="text-white/90 text-lg tracking-wide font-medium">
               World&#39;s First Premium Social Platform for Single-by-Choice Community
             </span>
           </div>
@@ -110,10 +110,10 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="max-w-4xl space-y-6"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-tight drop-shadow-[0_0_10px_rgba(255,255,255,0.1)]">
               You Only Live Once
             </h1>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white/90 tracking-wide">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white/90 tracking-[0.2em]">
               Define Life on Your Terms
             </h2>
           </motion.div>
