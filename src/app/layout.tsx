@@ -1,13 +1,19 @@
+import { poppins, notoSansSC, notoSansJP } from './fonts'
 import "~/styles/globals.css";
-import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+// import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { PropsWithChildren } from "react";
 
+// export const metadata = {
+//   title: 'iyoloo - 遇见心灵伴侣',
+//   description: '全球首个面向不婚主义者的高端社交平台，让每个人都能找到志同道合的伴侣，共创理想生活。',
+// }
+
 export const metadata = {
-  title: 'iyoloo - 遇见心灵伴侣',
-  description: '面向不婚主义者的高端社交平台，让每个人都能找到志同道合的伴侣，共创理想生活。',
+  title: 'iyoloo - Meet Your Soulmate',
+  description: "The world's first premium social platform for those single by choice, designed to connect like-minded individuals and co-create their ideal lifestyle.",
 }
 
 // export default function RootLayout({
@@ -24,20 +30,10 @@ export const metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <ClerkProvider>
-    <html lang="en">
-      <body className="min-h-screen bg-white font-sans">
-      <header>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-        </header>
-        <main>{children}</main>
-        </body>
+    <html lang="en" className={`${poppins.variable} ${notoSansSC.variable} ${notoSansJP.variable}`}>
+      <body className="min-h-screen overflow-x-hidden font-sans">
+        {children}
+      </body>
     </html>
-    </ClerkProvider>
   );
 }
