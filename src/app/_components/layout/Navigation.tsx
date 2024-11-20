@@ -2,7 +2,12 @@
 
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -86,7 +91,10 @@ const Navigation = () => {
                 <button 
                   className="w-full px-4 py-2 text-sm font-medium text-[#2D1B69] border border-[#2D1B69] rounded-full hover:bg-[#2D1B69] hover:text-white"
                 >
-                  Sign In
+                  {/* Sign In */}
+                  <SignedOut>
+                  <SignInButton />
+                </SignedOut>
                 </button>
                 <button className="w-full px-6 py-2 text-sm font-medium text-white rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#4F46E5] hover:opacity-90">
                   Start Now

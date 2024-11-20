@@ -1,5 +1,7 @@
 import "~/styles/globals.css";
-
+import {
+  ClerkProvider
+} from '@clerk/nextjs'
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
@@ -26,7 +28,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body className="min-h-screen bg-white font-sans">
+      <ClerkProvider>
         {children}
+      </ClerkProvider>
       </body>
     </html>
   );
