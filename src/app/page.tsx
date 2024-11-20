@@ -1,7 +1,7 @@
 import Navigation from "./_components/layout/Navigation"
 import HeroSection from "./_components/home/HeroSection"
 import ValuesSection from "./_components/home/ValuesSection";
-import TargetUsersSection from "./_components/home/TargetUsersSection";
+import ElitePortraitsSection from "./_components/home/ElitePortraitsSection";
 import FeaturesSection from "./_components/home/FeaturesSection";
 import MembershipBenefitsSection from "./_components/home/MembershipBenefitsSection";
 import SecuritySection from "./_components/home/SecuritySection";
@@ -16,7 +16,7 @@ export default function Home() {
       <HeroSection />
       <PhilosophySection />
       <ValuesSection />
-      <TargetUsersSection />
+      <ElitePortraitsSection />
       <FeaturesSection />
       <MembershipBenefitsSection />
       <SecuritySection />

@@ -27,30 +27,73 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1a103f] to-[#2D1B69]">
       {/* 星空背景 */}
       <div className="absolute inset-0">
-        {/* 流星 */}
-        {shootingStars.map((star, i) => (
+        {/* 静态星星 */}
+        {stars.map((star, i) => (
           <motion.div
-            key={`shooting-${i}`}
-            className="absolute w-1 h-1 rounded-full"
+            key={i}
+            className="absolute rounded-full bg-white"
             style={{
-              background: 'white',
-              boxShadow: '0 0 4px 1px rgba(255, 255, 255, 0.4)',
+              width: star.size + 'px',
+              height: star.size + 'px',
               left: star.x + '%',
+              top: star.y + '%',
+              filter: 'blur(0.5px)', // 添加轻微模糊使其更柔和
             }}
             animate={{
-              top: ['-5%', '105%'],
-              left: [star.x + '%', (star.x - 20 - Math.random() * 20) + '%'],
-              opacity: [0, 1, 0]
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.2, 1],
             }}
             transition={{
-              duration: 1 + Math.random(),
+              duration: star.duration,
               repeat: Infinity,
-              delay: star.delay * 3,
-              ease: 'linear'
-            }} />
-        ))}
-        {/* 星云效果 */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/5 via-transparent to-transparent animate-pulse-slow" />
+              delay: star.delay,
+            }}
+          />
+        ))} 
+
+        {/* 更新流星效果 */}
+        {shootingStars.map((star, i) => {
+          const angle = 35; // 固定一个下落角度，可以调整
+          return (
+            <motion.div
+              key={`shooting-${i}`}
+              className="absolute"
+              style={{
+                width: '2px',
+                height: '2px',
+                background: 'white',
+                boxShadow: '0 0 3px 1px rgba(255, 255, 255, 0.5)',
+                top: '-10%',
+                left: star.x + '%',
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100px',
+                  height: '1px',
+                  background: `linear-gradient(${angle}deg, white, transparent)`,
+                  transform: `rotate(${angle}deg)`,
+                  transformOrigin: 'left top'
+                }
+              }}
+              animate={{
+                top: ['-10%', '120%'],
+                left: [star.x + '%', `${star.x - 50}%`],
+                opacity: [0, 1, 0]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: star.delay * 3,
+                ease: "linear"
+              }}
+            />
+          );
+        })}
+
+        {/* 已有的星云效果 */}
+        <div className="absolute inset-0 bg-[radial-gradient(...)]" />
       </div>
 
       {/* 核心内容区 */}
@@ -70,40 +113,6 @@ const HeroSection = () => {
               Define Life on Your Terms
             </h2>
           </motion.div>
-
-          {/* 行星轨道系统 */}
-          {Array.from({ length: 3 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full border border-white/10"
-            style={{
-              width: `${(i + 1) * 200}px`,
-              height: `${(i + 1) * 200}px`,
-              left: '50%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
-            }}
-            animate={{
-              rotate: 360
-            }}
-            transition={{
-              duration: 20 + i * 10,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          >
-            {/* 行星 */}
-            <motion.div
-              className="absolute w-2 h-2 rounded-full bg-purple-400"
-              style={{
-                top: '0%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                boxShadow: '0 0 10px rgba(139, 92, 246, 0.5)',
-              }}
-            />
-          </motion.div>
-          ))}
 
           {/* 中心太阳光环 */}
           <motion.div
