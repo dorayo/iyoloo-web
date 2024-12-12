@@ -48,8 +48,7 @@ const MainDialog: React.FC = () => {
     },
     // ... other messages
   ]);
-
-  
+    
 
   const handleSearch = (query: string) => {
     console.log('Search:', query);
