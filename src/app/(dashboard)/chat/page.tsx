@@ -36,6 +36,19 @@ const MainDialog: React.FC = () => {
   const [activePanel, setActivePanel] = React.useState('requests');
   const [selectedUser, setSelectedUser] = React.useState<ChatMessage | null>(null);  
   const [activeBar, setActiveBar] = React.useState(0);
+
+  const [messages] = React.useState<ChatMessage[]>([
+    {
+      id: 1,
+      avatar: '/images/9c0e2873e9abde3d76ee276194dc6409.png',
+      name: 'Lisa',
+      message: '自定义设置一下自定义设置一下',
+      online: true,
+      unread: 1
+    },
+    // ... other messages
+  ]);
+
   
 
   const handleSearch = (query: string) => {
