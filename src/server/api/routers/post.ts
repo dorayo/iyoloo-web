@@ -4,6 +4,8 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { posts } from "~/server/db/schema";
 
 export const postRouter = createTRPCRouter({
+  // {"json":{"text":"5"}} get  batch=1&input={"0":{"json":{"name":"2"}}}
+  
   hello: publicProcedure
     .input(z.object({ text: z.string() }))
     .query(({ input }) => {
@@ -12,9 +14,11 @@ export const postRouter = createTRPCRouter({
       };
     }),
 
+    // {"json":{"name":"5"}} post
   create: publicProcedure
     .input(z.object({ name: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
+      console.log("create", input);
       await ctx.db.insert(posts).values({
         name: input.name,
       });
