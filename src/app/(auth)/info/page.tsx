@@ -202,7 +202,7 @@ export default function RegistrationForm() {
             </SelectTrigger>
             <SelectContent>
               {languages?.map((language) => (
-                  <SelectItem key={language.id} value={language.code}>
+                  <SelectItem key={language.id} value={language!.code!}>
                     {language.language}
                   </SelectItem>
                 ))}
