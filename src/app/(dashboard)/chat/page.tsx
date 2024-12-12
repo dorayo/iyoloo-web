@@ -36,65 +36,6 @@ const MainDialog: React.FC = () => {
   const [activePanel, setActivePanel] = React.useState('requests');
   const [selectedUser, setSelectedUser] = React.useState<ChatMessage | null>(null);  
   const [activeBar, setActiveBar] = React.useState(0);
-
-  const [messages] = React.useState<ChatMessage[]>([
-    {
-      id: 1,
-      avatar: '/images/9c0e2873e9abde3d76ee276194dc6409.png',
-      name: 'Lisa',
-      message: '自定义设置一下自定义设置一下',
-      online: true,
-      unread: 1
-    },
-    // ... other messages
-  ]);
-
-  const [requests] = React.useState<FriendRequest[]>([
-    {
-      id: 1,
-      avatar: '/images/9c0e2873e9abde3d76ee276194dc6409.png',
-      name: 'Lisa',
-      timestamp: '2024-11-26 14:00:00'
-    },
-    // ... other requests
-  ]);
-
-  const [notifications] = React.useState<Notification[]>([
-    {
-      id: 1,
-      avatar: '/images/9c0e2873e9abde3d76ee276194dc6409.png',
-      name: 'Lisa',
-      date: '2024-11-26',
-      timestamp: '14:00:00',
-      type: 'like'
-    },
-    {
-      id: 2,
-      avatar: '/images/4f8b1795441eedf89d4204eff972d43d.png',
-      name: 'Tom',
-      date: '2024-11-26',
-      timestamp: '14:00:00',
-      type: 'visit'
-    },
-    {
-      id: 3,
-      avatar: '/images/4f8b1795441eedf89d4204eff972d43d.png',
-      name: 'Tom',
-      date: '2024-11-26',
-      timestamp: '14:00:00',
-      type: 'follow'
-    }
-  ]);
-
-  const [announcements] = React.useState<Announcement[]>([
-    {
-      id: 1,
-      icon: '/images/56c2a684a347508388305c5f51628b42.png',
-      content: '终于等到你，欢迎来到iyoloo！',
-      date: '今天',
-      time: '12:00:00'
-    }
-  ]);
   
 
   const handleSearch = (query: string) => {
@@ -114,7 +55,6 @@ const MainDialog: React.FC = () => {
       case 'requests':
         return (
           <FriendRequestList
-            requests={requests}
             onAccept={handleAccept}
             onReject={handleReject}
             onClose={onClose}
@@ -123,7 +63,6 @@ const MainDialog: React.FC = () => {
       case 'notifications':
         return (
           <NotificationsPanel
-            notifications={notifications}
             onClose={onClose}
           />
         );
