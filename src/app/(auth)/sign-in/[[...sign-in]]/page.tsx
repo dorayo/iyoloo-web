@@ -17,7 +17,7 @@ export default function SignInPage() {
   const syncUser = api.user.syncUser.useMutation({
     onSuccess: (data) => {
       // Get user info to check if registration is complete
-      getUserInfo.refetch()
+      refetch()
     },
     onError: (error) => {
       toast({
@@ -29,24 +29,21 @@ export default function SignInPage() {
   })
 
   // Get user info query
-  const getUserInfo = api.user.getCurrentUser.useQuery(undefined, {
+  const { data: userData, refetch } = api.user.getCurrentUser.useQuery(undefined, {
     enabled: false, // Don't run automatically
-    onSuccess: (data) => {
+  })
+
+  // Handle query success
+  useEffect(() => {
+    if (userData) {
       // Check if user has completed registration
-      if (!data.userInfo.gender || !data.language || !data.userInfo.birthday) {
+      if (!userData.userInfo.gender || !userData.language || !userData.userInfo.birthday) {
         router.push('/info') // Redirect to info page if incomplete
       } else {
-        router.push('/homepage?id=' + data.id) // Redirect to dashboard if complete
+        router.push('/homepage?id=' + userData.id) // Redirect to dashboard if complete
       }
-    },
-    onError: (error) => {
-      toast({
-        title: "Error",
-        description: error.message,
-        variant: "destructive"
-      })
     }
-  })
+  }, [userData, router])
 
   useEffect(() => {
     if (!isAuthLoaded || !isUserLoaded) return
