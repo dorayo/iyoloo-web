@@ -48,8 +48,7 @@ export const transformImageUrl = (originalUrl: string): string => {
 
     // 构建新的URL（使用环信的公共访问域名）
     // 注意：这里的域名需要根据实际环境配置
-    const baseUrl =
-      process.env.NEXT_PUBLIC_EASEMOB_IMG_URL || "https://a1.easemob.com";
+    const baseUrl = "https://a1.easemob.com";
 
     // 构建新的URL路径
     const newPath = `//${baseUrl}/${orgName}/${appName}/chatfiles/${fileName}`;
