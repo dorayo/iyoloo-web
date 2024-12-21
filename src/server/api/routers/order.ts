@@ -1,7 +1,12 @@
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
-import { iMallOrder, iUser, iUserAccount } from "~/server/db/schema";
+import {
+  iMallOrder,
+  iUser,
+  iUserAccount,
+  iMallGoods,
+} from "~/server/db/schema";
 import { and, eq, desc, sql } from "drizzle-orm";
 
 export const orderRouter = createTRPCRouter({
@@ -17,7 +22,7 @@ export const orderRouter = createTRPCRouter({
         shippingPhone: z.string().optional(),
         message: z.string().optional(),
         paymentMethod: z.enum(["gold_coin"]),
-      })
+      }),
     )
     .mutation(async ({ ctx, input }) => {
       // Get current user
@@ -48,10 +53,10 @@ export const orderRouter = createTRPCRouter({
       }
 
       // Calculate total amount
-      const totalAmount = product.price * input.quantity;
+      const totalAmount = Number(product.price) * input.quantity;
 
       // Verify user has enough gold coins
-      if (currentUser.userAccount.goldCoin < totalAmount) {
+      if (Number(currentUser.userAccount.goldCoin) < totalAmount) {
         throw new TRPCError({
           code: "BAD_REQUEST",
           message: "Insufficient gold coins",
@@ -59,7 +64,7 @@ export const orderRouter = createTRPCRouter({
       }
 
       // If sending to friend, verify friend exists
-      let recipientUser = null;
+      let recipientUser:any = null;
       if (input.recipientType === "friend" && input.recipientUserId) {
         recipientUser = await ctx.db.query.iUser.findFirst({
           where: eq(iUser.id, input.recipientUserId),
@@ -84,21 +89,28 @@ export const orderRouter = createTRPCRouter({
           buyUserId: currentUser.id,
           buyNickname: currentUser.nickname,
           operation: input.recipientType === "friend" ? 1 : 0,
-          recipientUserId: input.recipientType === "friend" ? input.recipientUserId : currentUser.id,
-          recipientNickname: input.recipientType === "friend" ? recipientUser?.nickname : currentUser.nickname,
+          recipientUserId:
+            input.recipientType === "friend"
+              ? input.recipientUserId
+              : currentUser.id,
+          recipientNickname:
+            input.recipientType === "friend"
+              ? recipientUser?.nickname
+              : currentUser.nickname,
           recipientPhone: input.shippingPhone,
           shippingAddress: input.shippingAddress,
           remake: input.message,
           payType: 4, // Gold coins
-          amount: totalAmount,
+          amount: totalAmount.toString(),
           status: 1,
           payTime: new Date(),
         });
 
         // Deduct gold coins
-        await tx.update(iUserAccount)
+        await tx
+          .update(iUserAccount)
           .set({
-            goldCoin: currentUser.userAccount.goldCoin - totalAmount,
+            goldCoin: (Number(currentUser.userAccount.goldCoin) - totalAmount).toString(),
           })
           .where(eq(iUserAccount.userId, currentUser.id));
 
@@ -115,7 +127,7 @@ export const orderRouter = createTRPCRouter({
       z.object({
         page: z.number().min(1).default(1),
         pageSize: z.number().min(1).max(50).default(10),
-      })
+      }),
     )
     .query(async ({ ctx, input }) => {
       const { page, pageSize } = input;
@@ -138,16 +150,11 @@ export const orderRouter = createTRPCRouter({
         where: and(
           eq(iMallOrder.buyUserId, currentUser.id),
           eq(iMallOrder.isDelete, 0),
-          eq(iMallOrder.status, 2)
+          eq(iMallOrder.status, 2),
         ),
         with: {
           goods: true,
-          recipient: {
-            select: {
-              id: true,
-              nickname: true,
-            },
-          },
+          recipient: true,
         },
         offset,
         limit: pageSize,
@@ -162,8 +169,8 @@ export const orderRouter = createTRPCRouter({
           and(
             eq(iMallOrder.buyUserId, currentUser.id),
             eq(iMallOrder.isDelete, 0),
-            eq(iMallOrder.status, 2)
-          )
+            eq(iMallOrder.status, 2),
+          ),
         );
 
       return {
@@ -178,71 +185,65 @@ export const orderRouter = createTRPCRouter({
     }),
 
   // Get orders where user is recipient
-    getReceivedOrders: protectedProcedure
-      .input(
-        z.object({
-          page: z.number().min(1).default(1),
-          pageSize: z.number().min(1).max(50).default(10),
-        })
-      )
-      .query(async ({ ctx, input }) => {
-        const { page, pageSize } = input;
-        const offset = (page - 1) * pageSize;
+  getReceivedOrders: protectedProcedure
+    .input(
+      z.object({
+        page: z.number().min(1).default(1),
+        pageSize: z.number().min(1).max(50).default(10),
+      }),
+    )
+    .query(async ({ ctx, input }) => {
+      const { page, pageSize } = input;
+      const offset = (page - 1) * pageSize;
 
-        // Get current user
-        const currentUser = await ctx.db.query.iUser.findFirst({
-          where: eq(iUser.clerkId, ctx.userId),
+      // Get current user
+      const currentUser = await ctx.db.query.iUser.findFirst({
+        where: eq(iUser.clerkId, ctx.userId),
+      });
+
+      if (!currentUser) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "User not found",
         });
+      }
 
-        if (!currentUser) {
-          throw new TRPCError({
-            code: "NOT_FOUND",
-            message: "User not found",
-          });
-        }
+      // Get orders
+      const orders = await ctx.db.query.iMallOrder.findMany({
+        where: and(
+          eq(iMallOrder.recipientUserId, currentUser.id),
+          eq(iMallOrder.isDelete, 0),
+          eq(iMallOrder.status, 2),
+        ),
+        with: {
+          goods: true,
+          buyer: true,
+        },
+        offset,
+        limit: pageSize,
+        orderBy: [desc(iMallOrder.insertTime)],
+      });
 
-        // Get orders
-        const orders = await ctx.db.query.iMallOrder.findMany({
-          where: and(
+      // Get total count
+      const [{ count }] = await ctx.db
+        .select({ count: sql<number>`count(*)` })
+        .from(iMallOrder)
+        .where(
+          and(
             eq(iMallOrder.recipientUserId, currentUser.id),
             eq(iMallOrder.isDelete, 0),
-            eq(iMallOrder.status, 2)
+            eq(iMallOrder.status, 2),
           ),
-          with: {
-            goods: true,
-            buyer: {
-              select: {
-                id: true,
-                nickname: true,
-              },
-            },
-          },
-          offset,
-          limit: pageSize,
-          orderBy: [desc(iMallOrder.insertTime)],
-        });
+        );
 
-        // Get total count
-        const [{ count }] = await ctx.db
-          .select({ count: sql<number>`count(*)` })
-          .from(iMallOrder)
-          .where(
-            and(
-              eq(iMallOrder.recipientUserId, currentUser.id),
-              eq(iMallOrder.isDelete, 0),
-              eq(iMallOrder.status, 2)
-            )
-          );
-
-        return {
-          orders,
-          pagination: {
-            currentPage: page,
-            pageSize,
-            total: count,
-            totalPages: Math.ceil(count / pageSize),
-          },
-        };
-      }),
-
+      return {
+        orders,
+        pagination: {
+          currentPage: page,
+          pageSize,
+          total: count,
+          totalPages: Math.ceil(count / pageSize),
+        },
+      };
+    }),
 });

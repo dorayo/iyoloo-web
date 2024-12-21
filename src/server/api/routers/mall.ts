@@ -2,6 +2,7 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { iMallClassify, iMallGoods } from "~/server/db/schema";
 import { and, eq, desc, asc, sql } from "drizzle-orm";
+import { TRPCError } from "@trpc/server";
 
 export const mallRouter = createTRPCRouter({
   // 获取分类列表
@@ -21,8 +22,8 @@ export const mallRouter = createTRPCRouter({
         classifyId: z.number().optional(), // 可选的分类ID筛选
         page: z.number().min(1).default(1),
         pageSize: z.number().min(1).max(50).default(20),
-        sortBy: z.enum(['price_asc', 'price_desc', 'newest']).optional(),
-      })
+        sortBy: z.enum(["price_asc", "price_desc", "newest"]).optional(),
+      }),
     )
     .query(async ({ ctx, input }) => {
       const { classifyId, page, pageSize, sortBy } = input;
@@ -39,15 +40,15 @@ export const mallRouter = createTRPCRouter({
       }
 
       // 构建排序条件
-      let orderBy = [];
-      if (sortBy === 'price_asc') {
-        orderBy.push(asc(iMallGoods.price));
-      } else if (sortBy === 'price_desc') {
-        orderBy.push(desc(iMallGoods.price));
-      } else {
-        // 默认按最新排序
-        orderBy.push(desc(iMallGoods.insertTime));
-      }
+      // const orderBy = [];
+      // if (sortBy === "price_asc") {
+      //   orderBy.push(asc(iMallGoods.price));
+      // } else if (sortBy === "price_desc") {
+      //   orderBy.push(desc(iMallGoods.price));
+      // } else {
+      //   // 默认按最新排序
+      //   orderBy.push(desc(iMallGoods.insertTime));
+      // }
 
       // 获取商品列表
       const products = await ctx.db.query.iMallGoods.findMany({
@@ -62,7 +63,7 @@ export const mallRouter = createTRPCRouter({
         },
         limit: pageSize,
         offset,
-        orderBy,
+        // orderBy,
       });
 
       // 获取总数
@@ -86,15 +87,17 @@ export const mallRouter = createTRPCRouter({
 
   // 获取单个商品详情
   getProductDetail: publicProcedure
-    .input(z.object({
-      productId: z.number(),
-    }))
+    .input(
+      z.object({
+        productId: z.number(),
+      }),
+    )
     .query(async ({ ctx, input }) => {
       const product = await ctx.db.query.iMallGoods.findFirst({
         where: and(
           eq(iMallGoods.id, input.productId),
           eq(iMallGoods.isDelete, 0),
-          eq(iMallGoods.status, 1)
+          eq(iMallGoods.status, 1),
         ),
         with: {
           category: {
@@ -108,8 +111,8 @@ export const mallRouter = createTRPCRouter({
 
       if (!product) {
         throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: '商品不存在或已下架',
+          code: "NOT_FOUND",
+          message: "商品不存在或已下架",
         });
       }
 

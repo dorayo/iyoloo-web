@@ -6,7 +6,8 @@ const config = {
   },
   "plugins": [
     "@typescript-eslint",
-    "drizzle"
+    "drizzle",
+    "unused-imports"
   ],
   "extends": [
     "next/core-web-vitals",
@@ -55,7 +56,20 @@ const config = {
           "ctx.db"
         ]
       }
-    ]
+    ],
+    'no-unused-vars': 'off', // 关闭默认未使用变量检查
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      { 
+        vars: 'all', 
+        varsIgnorePattern: '^_', 
+        args: 'after-used', 
+        argsIgnorePattern: '^_' 
+      }
+    ],
+    "@next/next/no-img-element": "off"
+
   }
 }
 module.exports = config;

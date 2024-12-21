@@ -1,11 +1,11 @@
-import { useState, useCallback } from 'react';
-import type { Message } from '@/lib/chatType';
+import { useState, useCallback } from "react";
+import type { Message } from "~/types/chatType";
 
 export const useMessages = () => {
   const [messages, setMessages] = useState<Message[]>([]);
 
   const addMessage = useCallback((message: Message) => {
-    setMessages(prev => [...prev, message]);
+    setMessages((prev) => [...prev, message]);
   }, []);
 
   const clearMessages = useCallback(() => {
@@ -15,6 +15,6 @@ export const useMessages = () => {
   return {
     messages,
     addMessage,
-    clearMessages
+    clearMessages,
   };
 };

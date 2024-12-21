@@ -1,23 +1,23 @@
-'use client'
-import { useUserStore } from '~/store/user'
-import { useAuth, useUser } from '@clerk/nextjs'
-import { PropsWithChildren,useEffect,useState } from 'react';
-import { api } from '~/trpc/react'
+"use client";
+import { useUserStore } from "~/store/user";
+import { useAuth } from "@clerk/nextjs";
+import { type PropsWithChildren, useEffect, useState } from "react";
+import { api } from "~/trpc/react";
 
 export default function MarketingLayout({ children }: PropsWithChildren) {
   const [isClient, setIsClient] = useState(false);
-  const { userId } =  useAuth()
+  const { userId } = useAuth();
 
   const { data } = api.user.getCurrentUser.useQuery(undefined, {
-    enabled: !!userId  && isClient // 只在userId存在时查询
-  })  
-  const setUser = useUserStore((state) => state.setUser)
-  
+    enabled: !!userId && isClient, // 只在userId存在时查询
+  });
+  const setUser = useUserStore((state) => state.setUser);
+
   useEffect(() => {
-    if(data && isClient) {
-      setUser(data)
+    if (data && isClient) {
+      setUser(data);
     }
-  }, [data, setUser])
+  }, [data, setUser]);
 
   useEffect(() => {
     setIsClient(true);
@@ -28,9 +28,5 @@ export default function MarketingLayout({ children }: PropsWithChildren) {
     return <div>{children}</div>;
   }
 
-  return (
-    <main className="marketing-layout">
-      {children}
-    </main>
-  );
+  return <main className="marketing-layout">{children}</main>;
 }

@@ -17,7 +17,7 @@ interface PayPalVerificationResult {
  */
 async function getPayPalAccessToken(): Promise<string> {
   const auth = Buffer.from(
-    `${env.PAYPAL_CLIENT_ID}:${env.PAYPAL_SECRET}`
+    `${env.PAYPAL_CLIENT_ID}:${env.PAYPAL_CLIENT_SECRET}`,
   ).toString("base64");
 
   const response = await fetch(`${env.PAYPAL_API_URL}/v1/oauth2/token`, {
@@ -46,7 +46,7 @@ async function getPayPalAccessToken(): Promise<string> {
 export async function verifyPayPalPayment(
   orderId: string,
   expectedAmount?: number,
-  currency: string = "USD"
+  currency = "USD",
 ): Promise<PayPalVerificationResult> {
   try {
     const accessToken = await getPayPalAccessToken();
@@ -59,7 +59,7 @@ export async function verifyPayPalPayment(
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
-      }
+      },
     );
 
     if (!response.ok) {
@@ -69,7 +69,7 @@ export async function verifyPayPalPayment(
     const order = await response.json();
 
     // 基础验证
-    if (!order || !order.id || !order.status) {
+    if (!order?.id || !order.status) {
       return {
         verified: false,
         orderId,
@@ -94,7 +94,7 @@ export async function verifyPayPalPayment(
 
     // 获取支付单元和金额信息
     const purchaseUnit = order.purchase_units[0];
-    if (!purchaseUnit || !purchaseUnit.payments?.captures?.[0]) {
+    if (!purchaseUnit?.payments?.captures?.[0]) {
       return {
         verified: false,
         orderId,
@@ -110,7 +110,10 @@ export async function verifyPayPalPayment(
     const actualCurrency = payment.amount.currency_code;
 
     // 验证金额（如果提供了预期金额）
-    if (expectedAmount !== undefined && Math.abs(actualAmount - expectedAmount) > 0.01) {
+    if (
+      expectedAmount !== undefined &&
+      Math.abs(actualAmount - expectedAmount) > 0.01
+    ) {
       return {
         verified: false,
         orderId,

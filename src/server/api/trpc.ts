@@ -1,7 +1,7 @@
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
-import { getAuth, auth, currentUser  } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 
 import { db } from "~/server/db";
 
@@ -9,12 +9,11 @@ import { db } from "~/server/db";
  * 1. CONTEXT
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
-  
   const session = auth();
-  const { userId } = await auth()
+  const { userId } = await auth();
 
   // console.log('session', session,userId)
-  
+
   return {
     db,
     auth: session,
@@ -79,7 +78,7 @@ const isAuthed = t.middleware(({ next, ctx }) => {
       message: "请先登录",
     });
   }
-  
+
   return next({
     ctx: {
       auth: ctx.auth,

@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { ChevronLeft } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -16,16 +16,17 @@ export default function OrderContent() {
   // Queries
   const purchasedOrders = api.order.getPurchasedOrders.useQuery(
     { page, pageSize },
-    { enabled: type === 1 }
+    { enabled: type === 1 },
   );
 
   const receivedOrders = api.order.getReceivedOrders.useQuery(
     { page, pageSize },
-    { enabled: type === 2 }
+    { enabled: type === 2 },
   );
 
   const orders = type === 1 ? purchasedOrders.data : receivedOrders.data;
-  const isLoading = type === 1 ? purchasedOrders.isLoading : receivedOrders.isLoading;
+  const isLoading =
+    type === 1 ? purchasedOrders.isLoading : receivedOrders.isLoading;
 
   const handleBackClick = () => {
     window.history.back();
@@ -51,11 +52,11 @@ export default function OrderContent() {
   };
 
   return (
-    <div className="p-4 w-full min-h-screen">
+    <div className="min-h-screen w-full p-4">
       {/* Navigation */}
-      <div className="flex items-center gap-3 mb-6">
+      <div className="mb-6 flex items-center gap-3">
         <button className="flex items-center" onClick={handleBackClick}>
-          <ChevronLeft className="w-4 h-4 text-white" />
+          <ChevronLeft className="h-4 w-4 text-white" />
           <span className="text-white">返回</span>
         </button>
         <span className="text-white">我的订单</span>
@@ -64,9 +65,9 @@ export default function OrderContent() {
       {/* Order Tabs */}
       <Card className="mb-4 bg-[rgb(213,212,238)]">
         <CardContent className="p-4">
-          <div className="flex gap-12 relative pb-2">
-            <button 
-              className={`${type === 1 ? 'text-indigo-600' : 'text-gray-400'} transition-colors`}
+          <div className="relative flex gap-12 pb-2">
+            <button
+              className={`${type === 1 ? "text-indigo-600" : "text-gray-400"} transition-colors`}
               onClick={() => {
                 setType(1);
                 setPage(1);
@@ -74,8 +75,8 @@ export default function OrderContent() {
             >
               我购买的
             </button>
-            <button 
-              className={`${type === 2 ? 'text-indigo-600' : 'text-gray-400'} transition-colors`}
+            <button
+              className={`${type === 2 ? "text-indigo-600" : "text-gray-400"} transition-colors`}
               onClick={() => {
                 setType(2);
                 setPage(1);
@@ -83,10 +84,10 @@ export default function OrderContent() {
             >
               我收到的
             </button>
-            <div 
+            <div
               className={`absolute bottom-0 transition-all duration-300 ${
-                type === 1 ? 'left-[10px]' : 'left-[120px]'
-              } w-[22px] h-1 bg-indigo-600`}
+                type === 1 ? "left-[10px]" : "left-[120px]"
+              } h-1 w-[22px] bg-indigo-600`}
             />
           </div>
         </CardContent>
@@ -100,11 +101,11 @@ export default function OrderContent() {
             <Card key={i} className="bg-[rgb(213,212,238)]">
               <CardContent className="p-4">
                 <div className="flex gap-4">
-                  <Skeleton className="w-[98px] h-[98px] rounded-lg" />
+                  <Skeleton className="h-[98px] w-[98px] rounded-lg" />
                   <div className="flex-1">
-                    <Skeleton className="h-6 w-48 mb-2" />
-                    <Skeleton className="h-4 w-32 mt-12" />
-                    <Skeleton className="h-4 w-24 mt-2" />
+                    <Skeleton className="mb-2 h-6 w-48" />
+                    <Skeleton className="mt-12 h-4 w-32" />
+                    <Skeleton className="mt-2 h-4 w-24" />
                   </div>
                 </div>
               </CardContent>
@@ -125,15 +126,15 @@ export default function OrderContent() {
                   <img
                     src={order.goods.image}
                     alt={order.goods.name}
-                    className="w-[98px] h-[98px] rounded-lg object-cover"
+                    className="h-[98px] w-[98px] rounded-lg object-cover"
                   />
-                  
+
                   {/* Order Details */}
-                  <div className="flex justify-between flex-1">
+                  <div className="flex flex-1 justify-between">
                     {/* Left Content */}
                     <div>
                       <div className="flex items-center gap-3">
-                        <h3 className="text-gray-900 font-bold text-base">
+                        <h3 className="text-base font-bold text-gray-900">
                           {order.goods.name}
                         </h3>
                         <span className="text-gray-500">*{order.goodsSum}</span>
@@ -141,26 +142,27 @@ export default function OrderContent() {
                           {renderOrderStatus(order.status)}
                         </span>
                       </div>
-                      <div className="mt-12 space-y-2 text-gray-500 text-sm">
+                      <div className="mt-12 space-y-2 text-sm text-gray-500">
                         <div>
                           下单时间：
-                          {format(new Date(order.insertTime), 'yyyy-MM-dd HH:mm:ss')}
+                          {format(
+                            new Date(order.insertTime),
+                            "yyyy-MM-dd HH:mm:ss",
+                          )}
                         </div>
-                        <div>
-                          赠言：{order.remake || '-'}
-                        </div>
+                        <div>赠言：{order.remake || "-"}</div>
                       </div>
                     </div>
-                    
+
                     {/* Right Content */}
-                    <div className="flex flex-col justify-between items-end">
-                      <span className="text-xl text-indigo-600 font-bold">
+                    <div className="flex flex-col items-end justify-between">
+                      <span className="text-xl font-bold text-indigo-600">
                         {order.amount} 金币
                       </span>
                       <span className="text-gray-500">
-                        {type === 1 ? 
-                          `收货人：${order.recipient?.nickname}` : 
-                          `赠送人：${order.buyer?.nickname}`}
+                        {type === 1
+                          ? `收货人：${order.recipient?.nickname}`
+                          : `赠送人：${order.buyer?.nickname}`}
                       </span>
                     </div>
                   </div>
@@ -172,7 +174,7 @@ export default function OrderContent() {
 
         {/* Pagination */}
         {orders && orders.pagination.totalPages > 1 && (
-          <div className="flex justify-center gap-2 mt-6">
+          <div className="mt-6 flex justify-center gap-2">
             <Button
               variant="outline"
               onClick={() => handlePageChange(page - 1)}
@@ -180,7 +182,7 @@ export default function OrderContent() {
             >
               上一页
             </Button>
-            <span className="py-2 px-4 text-white">
+            <span className="px-4 py-2 text-white">
               {page} / {orders.pagination.totalPages}
             </span>
             <Button

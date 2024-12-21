@@ -1,13 +1,13 @@
-'use client'
+"use client";
 import { Card } from "@/components/ui/card";
-import { ChevronLeft, Users  } from "lucide-react";
+import { ChevronLeft, Users } from "lucide-react";
 import { api } from "~/trpc/react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 // 抽取骨架卡片组件
 const FanCardSkeleton = () => (
-  <Card className="bg-white rounded-lg overflow-hidden">
-    <Skeleton className="w-full aspect-square" />
+  <Card className="overflow-hidden rounded-lg bg-white">
+    <Skeleton className="aspect-square w-full" />
     <div className="p-3">
       <div className="flex items-center justify-between">
         <div className="space-y-2">
@@ -21,31 +21,28 @@ const FanCardSkeleton = () => (
             <Skeleton className="h-3 w-12" />
           </div>
         </div>
-        <Skeleton className="w-14 h-8 rounded" />
+        <Skeleton className="h-8 w-14 rounded" />
       </div>
     </div>
   </Card>
 );
 
 export default function FollowingList() {
-
-  const { data: followsData ,isLoading } = api.relation.getFollowList.useQuery({
+  const { data: followsData, isLoading } = api.relation.getFollowList.useQuery({
     page: 1,
-    pageSize: 50
+    pageSize: 50,
   });
   // console.log(333,followsData)
   const handleBackClick = () => {
     window.history.back();
   };
 
-
-
   return (
-    <div className="w-full min-h-screen">
+    <div className="min-h-screen w-full">
       {/* Navigation */}
       <div className="flex items-center gap-3 px-6 py-4">
-        <button className='flex items-center' onClick={handleBackClick}>
-          <ChevronLeft className="w-4 h-4 text-white" />
+        <button className="flex items-center" onClick={handleBackClick}>
+          <ChevronLeft className="h-4 w-4 text-white" />
           <span className="text-white">返回</span>
         </button>
         <span className="text-white">我的关注</span>
@@ -53,63 +50,84 @@ export default function FollowingList() {
 
       {/* Main Content */}
       <div className="mx-auto max-w-7xl px-4">
-        <div className="bg-[rgb(213,212,238)] rounded-lg p-4">
+        <div className="rounded-lg bg-[rgb(213,212,238)] p-4">
           {/* Grid of user cards */}
           {isLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {Array(8).fill(0).map((_, i) => (
-                <FanCardSkeleton key={i} />
-              ))}
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {Array(8)
+                .fill(0)
+                .map((_, i) => (
+                  <FanCardSkeleton key={i} />
+                ))}
             </div>
-          ) : (!followsData?.follows || followsData.follows.length === 0) ? (
+          ) : !followsData?.follows || followsData.follows.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20">
-              <div className="w-20 h-20 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
-                <Users className="w-10 h-10 text-indigo-600" />
+              <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-indigo-100">
+                <Users className="h-10 w-10 text-indigo-600" />
               </div>
-              <p className="text-gray-500 text-lg">暂无关注</p>
-              <p className="text-gray-400 text-sm mt-2">去发现更多有趣的人吧~</p>
+              <p className="text-lg text-gray-500">暂无关注</p>
+              <p className="mt-2 text-sm text-gray-400">
+                去发现更多有趣的人吧~
+              </p>
             </div>
           ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {followsData?.follows && followsData?.follows.map((user) => (
-              <Card key={user.id} className="bg-white rounded-lg overflow-hidden">
-                {/* User Avatar */}
-                <div className="relative w-full">
-                  <img
-                    src={user?.fansUser?.avatar || '/images/dd864e07b4202526dabaa469ed0e75ab.png'}
-                    className="w-full aspect-square object-cover"
-                  />
-                </div>
-
-                {/* User Info */}
-                <div className="p-3">
-
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold">{user.fansUser?.nickname}</span>
-                        <div className={`text-xs ${user.fansUser?.onlineState ? 'text-green-500 border border-green-500' : 'bg-gray-200 text-gray-500'} rounded-full px-2 py-0.5`}>
-                          {user.fansUser?.onlineState ? '在线' : '离线'}
-                        </div>
-                      </div>
-
-                      <div className="flex items-center text-gray-500 text-xs gap-2">
-                        <img
-                          src={user.fansUser?.userInfo?.gender==0?'/images/a59df0715ec3aa8ddd267014c5e4494f.png':user.fansUser?.userInfo?.gender==1?'/images/e3be6ddebcee5c13b9051ed628117cd3.png':'37b9b5249a60d6352f80d52d8eee480f.png'}
-                          className="w-4 h-4"
-                        />
-                        <span>{user.fansUser?.regionName}</span>
-                        <span>{user.fansUser?.distance}km</span>
-                      </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {followsData?.follows &&
+                followsData?.follows.map((user) => (
+                  <Card
+                    key={user.id}
+                    className="overflow-hidden rounded-lg bg-white"
+                  >
+                    {/* User Avatar */}
+                    <div className="relative w-full">
+                      <img
+                        src={
+                          user?.fansUser?.avatar ||
+                          "/images/dd864e07b4202526dabaa469ed0e75ab.png"
+                        }
+                        className="aspect-square w-full object-cover"
+                      />
                     </div>
 
-                    {/* Action Area */}
-                    <div className="w-14 h-8 bg-indigo-50/10 rounded"></div>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>)}
+                    {/* User Info */}
+                    <div className="p-3">
+                      <div className="flex items-center justify-between">
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm font-bold">
+                              {user.fansUser?.nickname}
+                            </span>
+                            <div
+                              className={`text-xs ${user.fansUser?.onlineState ? "border border-green-500 text-green-500" : "bg-gray-200 text-gray-500"} rounded-full px-2 py-0.5`}
+                            >
+                              {user.fansUser?.onlineState ? "在线" : "离线"}
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 text-xs text-gray-500">
+                            <img
+                              src={
+                                user.fansUser?.userInfo?.gender == 0
+                                  ? "/images/a59df0715ec3aa8ddd267014c5e4494f.png"
+                                  : user.fansUser?.userInfo?.gender == 1
+                                    ? "/images/e3be6ddebcee5c13b9051ed628117cd3.png"
+                                    : "37b9b5249a60d6352f80d52d8eee480f.png"
+                              }
+                              className="h-4 w-4"
+                            />
+                            <span>{user.fansUser?.regionName}</span>
+                            {/* <span>{user.fansUser?.distance}km</span> */}
+                          </div>
+                        </div>
+
+                        {/* Action Area */}
+                        <div className="h-8 w-14 rounded bg-indigo-50/10"></div>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

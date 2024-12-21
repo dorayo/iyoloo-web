@@ -1,4 +1,3 @@
-// server/api/routers/notification.ts
 import { z } from "zod";
 import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
 import { iUserInteract, iUser } from "~/server/db/schema";
@@ -9,96 +8,68 @@ export const notificationRouter = createTRPCRouter({
   getNotifications: protectedProcedure
     .input(
       z.object({
-        page: z.number().min(1).default(1),
-        pageSize: z.number().min(1).max(50).default(20),
-      })
+        cursor: z.number().nullish(),
+        pageSize: z.number().min(1).max(100).default(20),
+      }),
     )
     .query(async ({ ctx, input }) => {
-      const userInfo = await ctx.db.query.iUser.findFirst({
-        where: eq(iUser.clerkId, ctx.userId)
+      const limit = input.pageSize;
+      const cursor = input.cursor;
+
+      const user = await ctx.db.query.iUser.findFirst({
+        where: eq(iUser.clerkId, ctx.userId),
       });
 
-      if (!userInfo) {
+      if (!user) {
         throw new TRPCError({
           code: "NOT_FOUND",
           message: "User not found",
         });
       }
 
-      const { page, pageSize } = input;
-      const offset = (page - 1) * pageSize;
-
-      // Fetch notifications
       const notifications = await ctx.db.query.iUserInteract.findMany({
         where: and(
-          eq(iUserInteract.userId, userInfo.id),
-          eq(iUserInteract.isDelete, 0)
+          eq(iUserInteract.userId, user.id),
+          eq(iUserInteract.isDelete, 0),
+          cursor ? sql`id < ${cursor}` : undefined,
         ),
         with: {
-          otherUser: true
+          otherUser: {
+            columns: {
+              id: true,
+              nickname: true,
+              avatar: true,
+            },
+          },
         },
-        orderBy: [desc(iUserInteract.insertTime)],
-        offset,
-        limit: pageSize,
+        limit: limit + 1,
+        orderBy: [desc(iUserInteract.id)],
       });
 
-      // Get total count
-      const [{ total }] = await ctx.db
-        .select({
-          total: sql<number>`cast(count(*) as unsigned)`,
-        })
-        .from(iUserInteract)
-        .where(
-          and(
-            eq(iUserInteract.userId, userInfo.id),
-            eq(iUserInteract.isDelete, 0)
-          )
-        );
+      let nextCursor: typeof cursor | undefined = undefined;
+      if (notifications.length > limit) {
+        const nextItem = notifications.pop();
+        nextCursor = nextItem?.id;
+      }
 
       return {
-        notifications: notifications.map(notification => ({
-          ...notification,
-          otherUser: {
-            id: notification.otherUser.id,
-            nickname: notification.otherUser.nickname,
-            avatar: notification.otherUser.avatar,
-          }
-        })),
-        pagination: {
-          currentPage: page,
-          pageSize,
-          total,
-          totalPages: Math.ceil(total / pageSize),
-        },
+        notifications,
+        nextCursor,
       };
     }),
 
-  // The rest of the router remains the same
   markAsRead: protectedProcedure
     .input(
       z.object({
         notificationId: z.number(),
-      })
+      }),
     )
     .mutation(async ({ ctx, input }) => {
-      await ctx.db
-        .update(iUserInteract)
-        .set({
-          isRead: 1,
-          updateTime: new Date(),
-        })
-        .where(eq(iUserInteract.id, input.notificationId));
-
-      return { success: true };
-    }),
-
-  markAllAsRead: protectedProcedure
-    .mutation(async ({ ctx }) => {
-      const userInfo = await ctx.db.query.iUser.findFirst({
-        where: eq(iUser.clerkId, ctx.userId)
+      const user = await ctx.db.query.iUser.findFirst({
+        where: eq(iUser.clerkId, ctx.userId),
       });
 
-      if (!userInfo) {
+      if (!user) {
         throw new TRPCError({
           code: "NOT_FOUND",
           message: "User not found",
@@ -113,11 +84,36 @@ export const notificationRouter = createTRPCRouter({
         })
         .where(
           and(
-            eq(iUserInteract.userId, userInfo.id),
-            eq(iUserInteract.isRead, 0)
-          )
+            eq(iUserInteract.id, input.notificationId),
+            eq(iUserInteract.userId, user.id),
+          ),
         );
 
       return { success: true };
     }),
+
+  markAllAsRead: protectedProcedure.mutation(async ({ ctx }) => {
+    const user = await ctx.db.query.iUser.findFirst({
+      where: eq(iUser.clerkId, ctx.userId),
+    });
+
+    if (!user) {
+      throw new TRPCError({
+        code: "NOT_FOUND",
+        message: "User not found",
+      });
+    }
+
+    await ctx.db
+      .update(iUserInteract)
+      .set({
+        isRead: 1,
+        updateTime: new Date(),
+      })
+      .where(
+        and(eq(iUserInteract.userId, user.id), eq(iUserInteract.isRead, 0)),
+      );
+
+    return { success: true };
+  }),
 });

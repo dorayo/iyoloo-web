@@ -1,11 +1,17 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
-import { useUserStore } from '~/store/user'
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { useUserStore } from "~/store/user";
 
 const StarSVG = ({ size }: { size: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="white" opacity="0.8">
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="white"
+    opacity="0.8"
+  >
     <path d="M12 2L9 9H2L7.5 13.5L5.5 21L12 16.5L18.5 21L16.5 13.5L22 9H15L12 2Z" />
   </svg>
 );
@@ -18,30 +24,30 @@ const HeroSection = () => {
       y: Math.random() * 100,
       duration: 3 + Math.random() * 4,
       delay: Math.random() * 2,
-      angle: Math.PI * (0.25 + Math.random() * 0.25) // 控制流星角度
+      angle: Math.PI * (0.25 + Math.random() * 0.25), // 控制流星角度
     }));
   };
 
   const stars = generateStars(100);
   const shootingStars = generateStars(6);
 
-  const user = useUserStore((state) => state.user)  
+  const user = useUserStore((state) => state.user);
   const router = useRouter();
 
   const handleStartNowClick = () => {
-    if(user&&user.clerkId){
-      if(user?.userInfo?.birthday){
-        router.push('/homepage?id='+ user?.id)
-      }else{
-        router.push('/info')
+    if (user && user.clerkId) {
+      if (user?.userInfo?.birthday) {
+        router.push("/homepage?id=" + user?.id);
+      } else {
+        router.push("/info");
       }
-    }else{
-      router.push('/sign-in')
+    } else {
+      router.push("/sign-in");
     }
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1a103f] to-[#2D1B69]">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-[#1a103f] to-[#2D1B69]">
       {/* 星空背景 */}
       <div className="absolute inset-0">
         {/* 静态星星 */}
@@ -50,11 +56,11 @@ const HeroSection = () => {
             key={i}
             className="absolute rounded-full bg-white"
             style={{
-              width: star.size + 'px',
-              height: star.size + 'px',
-              left: star.x + '%',
-              top: star.y + '%',
-              filter: 'blur(0.5px)', // 添加轻微模糊使其更柔和
+              width: star.size + "px",
+              height: star.size + "px",
+              left: star.x + "%",
+              top: star.y + "%",
+              filter: "blur(0.5px)", // 添加轻微模糊使其更柔和
             }}
             animate={{
               opacity: [0.2, 0.8, 0.2],
@@ -66,7 +72,7 @@ const HeroSection = () => {
               delay: star.delay,
             }}
           />
-        ))} 
+        ))}
 
         {/* 更新流星效果 */}
         {shootingStars.map((star, i) => {
@@ -76,23 +82,23 @@ const HeroSection = () => {
               key={`shooting-${i}`}
               className="absolute"
               style={{
-                width: '2px',
-                height: '2px',
-                background: 'white',
-                boxShadow: '0 0 3px 1px rgba(255, 255, 255, 0.5)',
-                top: '-10%',
-                left: star.x + '%'
+                width: "2px",
+                height: "2px",
+                background: "white",
+                boxShadow: "0 0 3px 1px rgba(255, 255, 255, 0.5)",
+                top: "-10%",
+                left: star.x + "%",
               }}
               animate={{
-                top: ['-10%', '120%'],
-                left: [star.x + '%', `${star.x - 50}%`],
-                opacity: [0, 1, 0]
+                top: ["-10%", "120%"],
+                left: [star.x + "%", `${star.x - 50}%`],
+                opacity: [0, 1, 0],
               }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
                 delay: star.delay * 3,
-                ease: "linear"
+                ease: "linear",
               }}
             />
           );
@@ -103,19 +109,18 @@ const HeroSection = () => {
       </div>
 
       {/* 核心内容区 */}
-      <div className="relative z-[2] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20"> 
+      <div className="relative z-[2] mx-auto max-w-7xl px-4 pt-20 text-center sm:px-6 lg:px-8">
         {/* Platform Introduction - 新增部分 */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mb-16"  // 调整与主标题的间距
+          className="mb-16" // 调整与主标题的间距
         >
-          <div className="inline-block px-6 py-3 rounded-full 
-            bg-white/[0.03] backdrop-blur-md
-            border border-white/10 shadow-2xl">
-            <span className="text-white/90 text-lg tracking-wide font-medium">
-              World&#39;s First Premium Social Platform for Single-by-Choice Community
+          <div className="inline-block rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 shadow-2xl backdrop-blur-md">
+            <span className="text-lg font-medium tracking-wide text-white/90">
+              World&#39;s First Premium Social Platform for Single-by-Choice
+              Community
             </span>
           </div>
         </motion.div>
@@ -127,56 +132,65 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="max-w-4xl space-y-6"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-tight drop-shadow-[0_0_10px_rgba(255,255,255,0.1)]">
+            <h1 className="text-5xl font-bold leading-tight tracking-tight text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] md:text-7xl lg:text-8xl">
               You Only Live Once
             </h1>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white/90 tracking-[0.2em]">
+            <h2 className="text-2xl font-bold tracking-[0.2em] text-white/90 md:text-3xl lg:text-4xl">
               Define Life on Your Terms
             </h2>
           </motion.div>
 
           {/* 中心太阳光环 */}
           <motion.div
-          className="absolute w-40 h-40 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)',
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 0.8, 0.5]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+            className="absolute h-40 w-40 rounded-full"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)",
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.5, 0.8, 0.5],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
           />
 
           {/* 核心心形动画 */}
-          <div className="relative w-72 h-72">
+          <div className="relative h-72 w-72">
             {/* 心形光环 */}
             <motion.div
               animate={{
                 scale: [1, 1.1, 1],
-                opacity: [0.5, 0.8, 0.5]
+                opacity: [0.5, 0.8, 0.5],
               }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
               className="absolute inset-0 flex items-center justify-center"
             >
-              <svg 
+              <svg
                 viewBox="-10 -10 120 120"
-                className="w-64 h-64"
-                style={{ filter: 'drop-shadow(0 0 20px rgba(139, 92, 246, 0.3))' }}
+                className="h-64 w-64"
+                style={{
+                  filter: "drop-shadow(0 0 20px rgba(139, 92, 246, 0.3))",
+                }}
               >
                 <defs>
-                  <linearGradient id="heart-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient
+                    id="heart-gradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
                     <stop offset="0%" stopColor="#FF6B95">
                       <animate
                         attributeName="stop-color"
@@ -195,10 +209,10 @@ const HeroSection = () => {
                     </stop>
                   </linearGradient>
                   <filter id="glow">
-                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur" />
                     <feMerge>
-                      <feMergeNode in="coloredBlur"/>
-                      <feMergeNode in="SourceGraphic"/>
+                      <feMergeNode in="coloredBlur" />
+                      <feMergeNode in="SourceGraphic" />
                     </feMerge>
                   </filter>
                 </defs>
@@ -227,7 +241,7 @@ const HeroSection = () => {
                 key={i}
                 className="absolute inset-0 rounded-full"
                 style={{
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  border: "1px solid rgba(139, 92, 246, 0.3)",
                   scale: 1 + i * 0.2,
                 }}
                 animate={{
@@ -238,28 +252,25 @@ const HeroSection = () => {
                   duration: 3,
                   delay: i * 0.2,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
               />
             ))}
           </div>
-          
+
           {/* Start Now 按钮 */}
-          <motion.button 
+          <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="px-8 py-4 text-lg font-medium text-white rounded-full 
-              bg-gradient-to-r from-[#8B5CF6] to-[#4F46E5] 
-              hover:opacity-90 transition-all duration-200 
-              shadow-lg hover:shadow-xl transform hover:-translate-y-0.5
-              relative overflow-hidden group"
+            className="group relative transform overflow-hidden rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#4F46E5] px-8 py-4 text-lg font-medium text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 hover:shadow-xl"
           >
-            <div className="absolute inset-0 bg-white/20 group-hover:bg-white/30 
-              transition-colors duration-200" />
-            <button className="relative z-10" onClick={handleStartNowClick}>Start Now</button>
+            <div className="absolute inset-0 bg-white/20 transition-colors duration-200 group-hover:bg-white/30" />
+            <button className="relative z-10" onClick={handleStartNowClick}>
+              Start Now
+            </button>
           </motion.button>
         </div>
       </div>
@@ -278,13 +289,13 @@ const HeroSection = () => {
             />
           ))}
         </div> */}
-        
+
         {/* 中层能量场 */}
-        <div className="absolute w-[90%] h-[90%] animate-spin-reverse-slow opacity-15">
+        <div className="animate-spin-reverse-slow absolute h-[90%] w-[90%] opacity-15">
           {Array.from({ length: 12 }, (_, i) => (
             <div
               key={i}
-              className="absolute top-1/2 left-1/2 w-0.5 h-32 bg-gradient-to-t from-[#4F46E5] to-transparent origin-bottom"
+              className="absolute left-1/2 top-1/2 h-32 w-0.5 origin-bottom bg-gradient-to-t from-[#4F46E5] to-transparent"
               style={{
                 transform: `rotate(${i * 30}deg) translateX(-50%)`,
               }}
@@ -296,7 +307,7 @@ const HeroSection = () => {
       {/* 波浪过渡效果 */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
         <svg
-          className="relative block w-full h-[120px]"
+          className="relative block h-[120px] w-full"
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1200 120"
@@ -319,9 +330,8 @@ const HeroSection = () => {
           />
         </svg>
       </div>
-
     </section>
   );
 };
 
-export default HeroSection; 
+export default HeroSection;
