@@ -35,7 +35,7 @@ const HeroSection = () => {
   const router = useRouter();
 
   const handleStartNowClick = () => {
-    if (user && user.clerkId) {
+    if (user?.clerkId) {
       if (user?.userInfo?.birthday) {
         router.push("/homepage?id=" + user?.id);
       } else {

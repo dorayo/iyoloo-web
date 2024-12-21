@@ -15,6 +15,13 @@ interface PayPalVerificationResult {
 /**
  * 获取PayPal访问令牌
  */
+interface PayPalTokenResponse {
+  access_token: string;
+  token_type: string;
+  expires_in: number;
+}
+
+
 async function getPayPalAccessToken(): Promise<string> {
   const auth = Buffer.from(
     `${env.PAYPAL_CLIENT_ID}:${env.PAYPAL_CLIENT_SECRET}`,
@@ -33,7 +40,7 @@ async function getPayPalAccessToken(): Promise<string> {
     throw new Error("Failed to get PayPal access token");
   }
 
-  const data = await response.json();
+  const data:PayPalTokenResponse  = await response.json();
   return data.access_token;
 }
 

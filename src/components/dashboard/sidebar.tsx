@@ -33,7 +33,7 @@ export default function DashboardSidebar() {
   // console.log(444,userData)
   useEffect(() => {
     if (currentUser) {
-      setUserInfo(currentUser!);
+      setUserInfo(currentUser);
     }
   }, [currentUser]);
 
@@ -70,7 +70,7 @@ export default function DashboardSidebar() {
                 />
               </Avatar>
             </div>
-            {userInfo?.userAccount?.vipLevel! > 0 ? (
+            {userInfo?.userAccount?.vipLevel && userInfo.userAccount.vipLevel > 0 ? (
               <img
                 src={
                   userInfo?.userAccount?.vipLevel === 1

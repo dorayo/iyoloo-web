@@ -89,7 +89,7 @@ export const relationRouter = createTRPCRouter({
       // 构建regionId到name的映射
       const regionMap = regions.reduce(
         (map, region) => {
-          if (!region || !region.id || !region.region) return map;
+          if (!region?.id || !region?.region) return map;
           map[region.id] = region.region;
           return map;
         },
@@ -204,7 +204,7 @@ export const relationRouter = createTRPCRouter({
       // 构建regionId到name的映射
       const regionMap = regions.reduce(
         (map, region) => {
-          if (!region || !region.id || !region.region) return map;
+          if (!region?.id || !region?.region) return map;
           map[region.id] = region.region;
           return map;
         },
@@ -368,7 +368,7 @@ export const relationRouter = createTRPCRouter({
       // 构建regionId到name的映射
       const regionMap = regions.reduce(
         (map, region) => {
-          if (!region || !region.id || !region.region) return map;
+          if (!region?.id || !region?.region) return map;
           map[region.id] = region.region;
           return map;
         },
@@ -681,9 +681,8 @@ export const relationRouter = createTRPCRouter({
       // 构建地区映射
       const regionMap = regions.reduce(
         (map, region) => {
-          if (region && region.id != null && region.region != null){
-            map[region.id] = region.region;
-          }
+          if (!region?.id || !region?.region) return map;
+          map[region.id] = region.region;
           return map;
         },
         {} as Record<number, string>,

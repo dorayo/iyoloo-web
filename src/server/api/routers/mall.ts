@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { iMallClassify, iMallGoods } from "~/server/db/schema";
-import { and, eq, desc, asc, sql } from "drizzle-orm";
+import { and, eq, asc, sql } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
 
 export const mallRouter = createTRPCRouter({

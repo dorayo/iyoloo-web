@@ -136,7 +136,7 @@ export const rechargeRouter = createTRPCRouter({
 
           // 2. 获取用户账户信息
           const userAccount = await tx.query.iUserAccount.findFirst({
-            where: eq(iUserAccount.userId, order.buyUserId!),
+            where: eq(iUserAccount.userId, order.buyUserId),
           });
 
           if (!userAccount) {
@@ -153,7 +153,7 @@ export const rechargeRouter = createTRPCRouter({
               goldCoin: (Number(userAccount.goldCoin) + input.goldCoin).toString(),
               totalAmount: (Number(userAccount.totalAmount) + input.amount).toString(),
             })
-            .where(eq(iUserAccount.userId, order.buyUserId!));
+            .where(eq(iUserAccount.userId, order.buyUserId));
 
           // 4. 更新订单状态
           await tx

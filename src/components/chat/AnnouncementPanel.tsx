@@ -111,10 +111,10 @@ const AnnouncementPanel = ({ onClose }: { onClose: () => void }) => {
               <div className="relative flex-1 rounded-lg bg-white p-4 font-medium text-[#2D1B69] shadow-sm">
                 {announcement.content}
                 <div className="mt-2 text-xs text-gray-500">
-                  {new Date(announcement?.insertTime!).toLocaleString()}
+                  {announcement?.insertTime?new Date(announcement?.insertTime).toLocaleString():""}
                 </div>
                 <button
-                  onClick={() => handleMarkAsRead(announcement?.id!)}
+                  onClick={() => handleMarkAsRead(announcement?.id)}
                   className="absolute right-2 top-2 text-xs text-gray-500 hover:text-[#8B5CF6]"
                 >
                   标记已读

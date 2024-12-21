@@ -136,11 +136,14 @@ export const PayPalButton = ({
 
               // 捕获支付
               const order = await actions.order?.capture();
+              if (!order || !order.id) {
+                throw new Error("捕获支付失败，未获取到订单信息");
+              }
               const orderNo = (order?.purchase_units?.[0] as any)?.custom_id;
               // 完成支付并充值
               await completePayment.mutateAsync({
                 orderNo,
-                paypalOrderId: order?.id!,
+                paypalOrderId: order.id,
                 productType,
                 expectedAmount: Number(selectedOption.amount),
               });

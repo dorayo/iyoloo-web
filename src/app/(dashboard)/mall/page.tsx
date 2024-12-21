@@ -30,7 +30,19 @@ const ProductCardSkeleton = () => (
   </Card>
 );
 
-const ProductCard = ({ product, handleCallback }) => {
+interface Product {
+  id: number;
+  name: string ;
+  image: string;
+  price: number;
+}
+
+interface ProductCardProps {
+  product: Product;
+  handleCallback: (product: Product) => void;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product, handleCallback }) => {
   const priceFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -147,7 +159,7 @@ export default function StoreContent() {
           </div>
         ) : (
           <div className="grid grid-cols-4 gap-[13px]">
-            {productsData?.products.map((product) => (
+            {productsData?.products.map((product:any) => (
               <ProductCard
                 key={product.id}
                 product={product}

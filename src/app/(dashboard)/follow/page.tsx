@@ -72,8 +72,7 @@ export default function FollowingList() {
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {followsData?.follows &&
-                followsData?.follows.map((user) => (
+              {followsData?.follows.map((user) => (
                   <Card
                     key={user.id}
                     className="overflow-hidden rounded-lg bg-white"

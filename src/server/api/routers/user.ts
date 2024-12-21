@@ -344,7 +344,7 @@ export const userRouter = createTRPCRouter({
       },
     });
 
-    if (!currentUser?.userInfo) {
+    if (!currentUser?.userAccount) {
       throw new TRPCError({
         code: "NOT_FOUND",
         message: "当前用户不存在或信息不完整",
@@ -352,14 +352,14 @@ export const userRouter = createTRPCRouter({
     }
 
     // 2. Check VIP status and match count
-    if (currentUser?.userAccount?.vipLevel! < 2) {
+    if (currentUser.userAccount.vipLevel! < 2) {
       throw new TRPCError({
         code: "FORBIDDEN",
         message: "需要SVIP会员才能使用匹配功能",
       });
     }
 
-    if (currentUser?.userAccount?.matchCount! <= 0) {
+    if (currentUser.userAccount.matchCount! <= 0) {
       throw new TRPCError({
         code: "FORBIDDEN",
         message: "今日匹配次数已用完",
@@ -397,12 +397,12 @@ export const userRouter = createTRPCRouter({
     }
 
     const match = results[0];
-
+    const matchCount = currentUser.userAccount.matchCount ?? 0; // 使用空值合并运算符提供默认值
     // 4. Decrease match count
     await ctx.db
       .update(iUserAccount)
       .set({
-        matchCount: currentUser?.userAccount?.matchCount! - 1,
+        matchCount: Math.max(0, matchCount - 1),
       })
       .where(eq(iUserAccount.userId, currentUser.id));
 
@@ -423,7 +423,7 @@ export const userRouter = createTRPCRouter({
           personalSign: match.userInfo.personalSign,
         },
       },
-      remainingCount: currentUser?.userAccount?.matchCount! - 1,
+      remainingCount:Math.max(0, matchCount - 1),
     };
   }),
 });

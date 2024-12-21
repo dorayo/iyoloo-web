@@ -10,7 +10,16 @@ import { useToast } from "@/hooks/use-toast";
 import { ChevronLeft, ChevronRight, Plus, X } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
-const ImagePreview = ({
+interface ImagePreviewProps {
+  images: (string | null)[];
+  currentIndex: number;
+  isOpen: boolean;
+  onClose: () => void;
+  onPrevious: () => void;
+  onNext: () => void;
+}
+
+const ImagePreview: React.FC<ImagePreviewProps>  = ({
   images,
   currentIndex,
   isOpen,
@@ -64,7 +73,7 @@ const ImagePreview = ({
 
           {/* Image */}
           <img
-            src={images[currentIndex]}
+            src={images[currentIndex] || ""}
             alt={`Preview ${currentIndex + 1}`}
             className="max-h-[80vh] max-w-[80vw] object-contain"
           />
@@ -146,7 +155,6 @@ export default function PersonalCenter() {
 
       // Extract hobby names
       const hobbyNames =
-        userData?.userInfo?.interest &&
         userData?.userInfo?.interest?.split(",")?.map((id) => {
           return hobbies?.find((hobby) => hobby.id === parseInt(id, 10))?.hobby;
         }).filter(Boolean).map(String) || [];
@@ -161,8 +169,11 @@ export default function PersonalCenter() {
       setLanguageName(languageName);
 
       // Extract region name
-      const regionName =
-        regions?.find((region) => region.id === parseInt(userData?.region!, 10))?.region || "";
+      const regionName = regions?.find((region) => {
+        const regionId = userData?.region;
+        if (regionId == null) return false; // 或者根据业务逻辑返回合适的默认值
+        return region.id === parseInt(regionId, 10);
+      })?.region || "";
       setRegionName(regionName);
     }
   }, [userData, hobbies]);
@@ -321,8 +332,7 @@ export default function PersonalCenter() {
                 个人介绍：{userData?.userInfo?.personalSign}
               </p>
               <div className="mt-6 flex gap-2.5">
-                {hobbyNames &&
-                  hobbyNames?.map((hobby, index) => (
+                {hobbyNames?.map((hobby, index) => (
                     <div
                       key={index}
                       className="flex h-6 w-10 items-center justify-center rounded border border-indigo-600 bg-indigo-50/10 text-center"

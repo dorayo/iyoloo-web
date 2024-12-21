@@ -37,7 +37,7 @@ const Navigation = () => {
   };
 
   const handleStartNowClick = () => {
-    if (user && user?.clerkId) {
+    if (user?.clerkId) {
       if (user.userInfo?.birthday) {
         router.push("/homepage?id=" + user.id);
       } else {
@@ -85,7 +85,7 @@ const Navigation = () => {
               Language
             </button> */}
             <LanguageSwitcher />
-            {!(user && user.clerkId) && (
+            {!(user?.clerkId) && (
               <button
                 onClick={handleLoginClick}
                 className="transform rounded-full border border-white/10 px-5 py-2.5 text-sm font-medium text-white/90 backdrop-blur-sm transition-all duration-200 hover:bg-white/10 active:scale-95"

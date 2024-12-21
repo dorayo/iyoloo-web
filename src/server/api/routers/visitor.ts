@@ -91,7 +91,7 @@ export const visitorRouter = createTRPCRouter({
       // 构建regionId到name的映射
       const regionMap = regions.reduce(
         (map, region) => {
-          if (region && region.id != null && region.region != null) {
+          if (region?.id != null && region?.region != null) {
             map[region.id] = region.region;
           }
           return map;

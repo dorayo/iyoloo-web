@@ -7,63 +7,142 @@ import {
   type Message,
   type Conversation,
 } from "~/types/chatType";
+import type { EasemobChatStatic } from 'easemob-websdk';
+
+
+// Global variable to store WebIM instance
+interface MessageCreationParams {
+  type: string;
+  msg: string;
+  to: string;
+  chatType: 'singleChat' | 'groupChat';
+  ext?: Record<string, any>;
+}
+
+interface MessageSendResult {
+  id?: string;
+  status?: 'sent' | 'failed';
+  // 根据实际 Easemob SDK 的返回结构添加其他字段
+}
+
+interface WebIMConfig {
+  socketServer: string;
+  restServer: string;
+  appkey: string;
+  https: boolean;
+  isHttpDNS: boolean;
+  isMultiLoginSessions: boolean;
+  isSandBox: boolean;
+  isDebug: boolean;
+  autoReconnectNumMax: number;
+  delivery: boolean;
+  useOwnUploadFun: boolean;
+  deviceId: string;
+}
+
+interface ExtendedEasemobChat extends EasemobChatStatic {
+  config: WebIMConfig;
+}
+
+let WebIM: ExtendedEasemobChat | null = null;
+
+// Utility function to initialize WebIM
+const initializeWebIM = async (): Promise<ExtendedEasemobChat> => {
+  if (typeof window === 'undefined') {
+    throw new Error('WebIM can only be initialized in browser environment');
+  }
+
+  if (WebIM) {
+    return WebIM;
+  }
+
+  try {
+    // Dynamic import of easemob-websdk
+    const webIMModule  = await import('easemob-websdk');
+    WebIM = webIMModule.default as ExtendedEasemobChat;
+    
+    // Configure WebIM
+    WebIM.config = {
+      socketServer: `${window.location.protocol === 'https:' ? 'https:' : 'http:'}//im-api-v2.easemob.com`,
+      restServer: `${window.location.protocol === 'https:' ? 'https:' : 'http:'}//a1.easemob.com`,
+      appkey: '1130220622140887#iyoloo',
+      https: true,
+      isHttpDNS: true,
+      isMultiLoginSessions: true,
+      isSandBox: true,
+      isDebug: true,
+      autoReconnectNumMax: 10,
+      delivery: true,
+      useOwnUploadFun: false,
+      deviceId: 'webim',
+      //... other config options
+    };
+
+    return WebIM;
+  } catch (error) {
+    console.error('Failed to initialize WebIM:', error);
+    throw error;
+  }
+};
+
+
 
 // 动态导入环信SDK，避免服务端渲染问题
-let WebIM: any;
-if (typeof window !== "undefined") {
-  WebIM = require("easemob-websdk").default;
-  WebIM.config = {
-    socketServer:
-      (window.location.protocol === "https:" ? "https:" : "http:") +
-      "//im-api-v2.easemob.com",
+// let WebIM: any;
+// if (typeof window !== "undefined") {
+//   WebIM = require("easemob-websdk").default;
+//   WebIM.config = {
+//     socketServer:
+//       (window.location.protocol === "https:" ? "https:" : "http:") +
+//       "//im-api-v2.easemob.com",
 
-    restServer:
-      (window.location.protocol === "https:" ? "https:" : "http:") +
-      "//a1.easemob.com",
+//     restServer:
+//       (window.location.protocol === "https:" ? "https:" : "http:") +
+//       "//a1.easemob.com",
 
-    appkey: "1130220622140887#iyoloo", //正式
-    // appkey: '1130220622140887#demo', // 测试
-    Host: "easemob.com",
+//     appkey: "1130220622140887#iyoloo", //正式
+//     // appkey: '1130220622140887#demo', // 测试
+//     Host: "easemob.com",
 
-    https: true,
+//     https: true,
 
-    isHttpDNS: true,
+//     isHttpDNS: true,
 
-    isMultiLoginSessions: true,
+//     isMultiLoginSessions: true,
 
-    isSandBox: true, //内部测试环境，集成时设为false
+//     isSandBox: true, //内部测试环境，集成时设为false
 
-    isDebug: true,
+//     isDebug: true,
 
-    autoReconnectNumMax: 10,
+//     autoReconnectNumMax: 10,
 
-    isWebRTC:
-      window.RTCPeerConnection && /^https\:$/.test(window.location.protocol),
+//     isWebRTC:
+//       window.RTCPeerConnection && /^https\:$/.test(window.location.protocol),
 
-    useOwnUploadFun: false,
-    /**
-     *  cn: chinese
-     *  us: english
-     */
-    i18n: "cn",
+//     useOwnUploadFun: false,
+//     /**
+//      *  cn: chinese
+//      *  us: english
+//      */
+//     i18n: "cn",
 
-    isAutoLogin: false,
+//     isAutoLogin: false,
 
-    p2pMessageCacheSize: 500,
+//     p2pMessageCacheSize: 500,
 
-    delivery: true,
+//     delivery: true,
 
-    groupMessageCacheSize: 200,
+//     groupMessageCacheSize: 200,
 
-    loglevel: "ERROR",
+//     loglevel: "ERROR",
 
-    enableLocalStorage: true,
+//     enableLocalStorage: true,
 
-    deviceId: "webim",
+//     deviceId: "webim",
 
-    AgoraAppId: "15cb0d28b87b425ea613fc46f7c9f974",
-  };
-}
+//     AgoraAppId: "15cb0d28b87b425ea613fc46f7c9f974",
+//   };
+// }
 
 interface EasemobContextType {
   isConnected: boolean;
@@ -109,13 +188,17 @@ export function EasemobProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!userId || !currentUser || typeof window === "undefined") return;
 
+    let connection: any = null; // TODO: Add proper connection type
+
     const initEasemob = async () => {
       try {
         // 创建连接实例
-        const connection = new WebIM.connection({
-          appKey: process.env.EASEMOB_APP_KEY,
-          url: "wss://im-api-wechat.easemob.com/websocket",
-          apiUrl: "https://a1.easemob.com",
+        const webim = await initializeWebIM();
+
+        connection = new webim.connection({
+          appKey: '1130220622140887#iyoloo',
+          url: 'wss://im-api-wechat.easemob.com/websocket',
+          apiUrl: 'https://a1.easemob.com',
           heartBeatWait: 30000,
           autoReconnectNumMax: 5,
           delivery: true,
@@ -230,20 +313,25 @@ export function EasemobProvider({ children }: { children: React.ReactNode }) {
   const sendMessage = async (
     to: string,
     content: string,
-    type = "txt",
+    type: string, 
     ext?: any,
   ) => {
+    if (!WebIM) {
+      throw new Error("WebIM is not initialized");
+    }
     if (!conn || !isConnected) {
       throw new Error("Not connected to chat service");
     }
+    
     try {
-      const option = {
+      const option: any  = {
         type: type,
         msg: content,
         to: to,
         chatType: "singleChat",
         ext: ext,
         customExts: ext,
+        customEvent: "",
       };
       console.log("Sending message:", option);
       const msgObj = WebIM.message.create(option);
@@ -258,7 +346,6 @@ export function EasemobProvider({ children }: { children: React.ReactNode }) {
         status: "sent",
       });
 
-      return result;
     } catch (error) {
       console.error("Send message failed:", error);
       handleMessageFailed(error);
@@ -268,6 +355,9 @@ export function EasemobProvider({ children }: { children: React.ReactNode }) {
 
   // 发送图片
   const sendImage = async (to: string, file: File) => {
+    if (!WebIM) {
+      throw new Error("WebIM is not initialized");
+    }
     if (!conn || !isConnected) {
       throw new Error("Not connected to chat service");
     }
@@ -278,14 +368,13 @@ export function EasemobProvider({ children }: { children: React.ReactNode }) {
     if (!allowType.includes(fileType)) {
       throw new Error("Unsupported image type");
     }
-    console.log("222222", file);
     const file1 = {
       data: file, //file 对象。
       filename: file.name, //文件名称。
       filetype: file.type, //文件类型。
     };
     try {
-      const option = {
+      const option :any  = {
         type: "img",
         file: file1,
         to: to,
@@ -307,7 +396,6 @@ export function EasemobProvider({ children }: { children: React.ReactNode }) {
         status: "sent",
       });
 
-      return result;
     } catch (error) {
       console.error("Send image failed:", error);
       handleMessageFailed(error);
@@ -322,19 +410,26 @@ export function EasemobProvider({ children }: { children: React.ReactNode }) {
     }
 
     try {
-      const response = await conn.getHistoryMessages({
+      const response:any = await conn.getHistoryMessages({
         targetId: conversationId,
         pageSize: 20,
         chatType: "singleChat",
       });
 
       console.log("History messages:", response);
-      const messages = response.messages.filter((e) => e.type != "cmd");
-      const sortedMessages = messages.sort((a, b) => a.time - b.time);
-      const formattedMessages =
-        sortedMessages?.map((msg: any) => ({
+      const messages:Message[] = response.messages.filter((e) => e.type != "cmd");
+      const sortedMessages: Message[] = messages.sort((a, b) => {
+        // 确保 time 存在且为数字
+        const timeA = typeof a.time === 'number' ? a.time : 0;
+        const timeB = typeof b.time === 'number' ? b.time : 0;
+        return timeA - timeB;
+      });
+      const formattedMessages:Message[] =
+        sortedMessages?.map((msg: Message) => ({
           ...msg,
-          timestamp: new Date(msg.time).getTime(),
+          timestamp: msg.time && typeof msg.time === 'number' 
+          ? new Date(msg.time).getTime() 
+          : Date.now(),
         })) || [];
 
       setMessages(formattedMessages);
@@ -438,7 +533,12 @@ export function EasemobProvider({ children }: { children: React.ReactNode }) {
       await conn.reconnect();
     } catch (error) {
       console.error("Reconnect failed:", error);
-      setTimeout(handleReconnect, 3000);
+      setTimeout(() => {
+        if (!conn) return;
+        conn.reconnect().catch((reconnectError) => {
+          console.error("Secondary reconnect failed:", reconnectError);
+        });
+      }, 3000);
     }
   };
 
