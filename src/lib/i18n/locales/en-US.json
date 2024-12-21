@@ -1,0 +1,12 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "login": "Login",
+    "signup": "Sign Up",
+    "Start Now": "Start Now"
+  },
+  "auth":{
+      
+  }
+
+}

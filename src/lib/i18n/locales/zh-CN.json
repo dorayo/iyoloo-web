@@ -1,0 +1,11 @@
+{
+  "common": {
+    "welcome": "欢迎",
+    "login": "登录",
+    "signup": "注册",
+    "Start Now": "现在开始"  
+  },
+  "auth":{
+      
+  }
+}
