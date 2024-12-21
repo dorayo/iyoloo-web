@@ -113,7 +113,7 @@ export function EasemobProvider({ children }: { children: React.ReactNode }) {
       try {
         // 创建连接实例
         const connection = new WebIM.connection({
-          appKey: process.env.NEXT_PUBLIC_EASEMOB_APP_KEY,
+          appKey: process.env.EASEMOB_APP_KEY,
           url: "wss://im-api-wechat.easemob.com/websocket",
           apiUrl: "https://a1.easemob.com",
           heartBeatWait: 30000,

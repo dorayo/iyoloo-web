@@ -17,13 +17,16 @@ export const env = createEnv({
     OSS_ACCESS_KEY_SECRET: z.string(),
     OSS_BUCKET: z.string(),
 
-    EASEMOB_APP_KEY: z.string(),
     EASEMOB_WS_URL: z.string(),
     EASEMOB_API_URL: z.string(),
 
     PAYPAL_CLIENT_ID: z.string(),
     PAYPAL_CLIENT_SECRET: z.string(),
     PAYPAL_API_URL: z.string(),
+
+    EASEMOB_APP_KEY: z.string(),
+    EASEMOB_CLIENT_ID: z.string(),
+    EASEMOB_CLIENT_SECRET: z.string(),
   },
 
   /**
@@ -34,9 +37,8 @@ export const env = createEnv({
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
 
-    NEXT_PUBLIC_EASEMOB_APP_KEY: z.string(),
-    NEXT_PUBLIC_EASEMOB_CLIENT_ID: z.string(),
-    NEXT_PUBLIC_EASEMOB_CLIENT_SECRET: z.string(),
+
+
   },
 
   /**
@@ -52,14 +54,13 @@ export const env = createEnv({
     OSS_ACCESS_KEY_SECRET: process.env.OSS_ACCESS_KEY_SECRET,
     OSS_BUCKET: process.env.OSS_BUCKET,
 
-    EASEMOB_APP_KEY: process.env.EASEMOB_APP_KEY,
     EASEMOB_WS_URL: process.env.EASEMOB_WS_URL,
     EASEMOB_API_URL: process.env.EASEMOB_API_URL,
 
-    NEXT_PUBLIC_EASEMOB_APP_KEY: process.env.NEXT_PUBLIC_EASEMOB_APP_KEY,
-    NEXT_PUBLIC_EASEMOB_CLIENT_ID: process.env.NEXT_PUBLIC_EASEMOB_CLIENT_ID,
-    NEXT_PUBLIC_EASEMOB_CLIENT_SECRET:
-      process.env.NEXT_PUBLIC_EASEMOB_CLIENT_SECRET,
+    EASEMOB_APP_KEY: process.env.EASEMOB_APP_KEY,
+    EASEMOB_CLIENT_ID: process.env.EASEMOB_CLIENT_ID,
+    EASEMOB_CLIENT_SECRET:
+      process.env.EASEMOB_CLIENT_SECRET,
 
     PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID,
     PAYPAL_CLIENT_SECRET: process.env.PAYPAL_CLIENT_SECRET,
