@@ -115,7 +115,7 @@ export default function StoreContent() {
   };
 
   return (
-    <div className="p-4">
+    <div className="w-full min-w-0">
       {/* Categories */}
       <Card className="mb-4 bg-purple-100">
         <CardContent className="px-4 py-2">

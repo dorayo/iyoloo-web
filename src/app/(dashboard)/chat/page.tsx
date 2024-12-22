@@ -222,7 +222,7 @@ const MainDialog: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/50">
+    <div className="flex-1 min-w-0 w-full fixed inset-0 flex items-center justify-center bg-black/50">
       <div className="flex h-[653px] w-[870px] overflow-hidden rounded-lg bg-[#D5D4EE]">
         <NavigationSidebar
           activeBar={activeBar}

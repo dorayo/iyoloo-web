@@ -94,7 +94,7 @@ const PricingPage = () => {
   };
 
   return (
-    <div className="w-full max-w-6xl rounded-lg bg-[rgb(45,27,105)]">
+    <div className="w-full min-w-0 max-w-6xl rounded-lg bg-[rgb(45,27,105)]">
       {/* Navigation */}
       <div className="flex items-center gap-4 py-4">
         <button
@@ -139,7 +139,7 @@ const PricingPage = () => {
 
       {/* Pricing Cards */}
       {type < 3 && (
-        <div className="flex justify-center gap-5 py-8">
+        <div className="flex justify-space-between gap-5 py-8">
           {/* Free Tier */}
           <Card className="w-80 bg-[rgb(213,212,238)]">
             <CardHeader>

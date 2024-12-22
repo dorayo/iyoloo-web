@@ -14,6 +14,7 @@ import {
 } from "~/server/db/schema";
 import { and, eq, desc, sql, ne } from "drizzle-orm";
 import { createUpdateData } from "~/lib/utils";
+import { createEasemobUser } from "~/lib/easemob";
 
 export const userRouter = createTRPCRouter({
   // 首次登录时创建或更新用户信息
@@ -51,52 +52,71 @@ export const userRouter = createTRPCRouter({
 
       // 创建新用户
       return await ctx.db.transaction(async (tx) => {
-        // 创建用户基本信息
-        const newUser = await tx
-          .insert(iUser)
-          .values({
-            clerkId: input.clerkId,
-            email: input.email,
-            password: input.clerkId,
-            nickname: input.nickname,
-            avatar: input.avatarUrl,
-            language: input.language ?? "zh-CN",
-            region: input.region,
-            status: 1,
-            type: 2,
-          })
-          .execute();
+          try {
+              // 创建用户基本信息
+              const newUser = await tx
+                .insert(iUser)
+                .values({
+                  clerkId: input.clerkId,
+                  email: input.email,
+                  password: input.clerkId,
+                  nickname: input.nickname,
+                  avatar: input.avatarUrl,
+                  language: input.language ?? "zh-CN",
+                  region: input.region,
+                  status: 1,
+                  type: 2,
+                })
+                .execute();
 
-        const userId = Number(newUser[0].insertId);
+              const userId = Number(newUser[0].insertId);
+              const accountNumber = userId + 100000;
 
-        tx.update(iUser)
-          .set({
-            account: userId + 100000,
-          })
-          .where(eq(iUser.id, userId));
+              // 2. 创建环信账号
+              try {
+                await createEasemobUser(`iyoloo${accountNumber}`, input.clerkId);
+              } catch (error) {
+                console.error("创建环信账号失败:", error);
+                throw new TRPCError({
+                  code: "INTERNAL_SERVER_ERROR",
+                  message: "创建环信账号失败",
+                  cause: error,
+                });
+              }
 
-        // 创建用户账户信息
-        await tx.insert(iUserAccount as any).values({
-          userId: userId,
-          goldCoin: "0",
-          character: "0",
-          vipLevel: "0",
-        });
+            await tx.update(iUser)
+              .set({
+                account: userId + 100000,
+              })
+              .where(eq(iUser.id, userId));
 
-        // 创建用户详细信息
-        await tx.insert(iUserInfo).values({
-          userId: userId,
-        });
+            // 创建用户账户信息
+            await tx.insert(iUserAccount as any).values({
+              userId: userId,
+              goldCoin: "0",
+              character: "0",
+              vipLevel: "0",
+            });
 
-        // 创建用户数据统计
-        await tx.insert(iUserData).values({
-          userId: userId,
-        });
+            // 创建用户详细信息
+            await tx.insert(iUserInfo).values({
+              userId: userId,
+            });
 
-        return {
-          message: "用户创建成功",
-          userId: userId,
-        };
+            // 创建用户数据统计
+            await tx.insert(iUserData).values({
+              userId: userId,
+            });
+
+          return {
+            message: "用户创建成功",
+            userId: userId,
+          };
+        } catch (error) {
+          // 如果任何步骤失败，事务会自动回滚
+          console.error("创建用户失败:", error);
+          throw error;
+        }
       });
     }),
   // 获取用户信息 - 公开接口

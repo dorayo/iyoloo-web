@@ -20,7 +20,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-[#1E1247] px-[348px] py-2 shadow-sm">
+    <header className="bg-[#1E1247] px-[250px] py-2 shadow-sm">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <span className="font-poppins text-2xl font-bold tracking-tight text-white">

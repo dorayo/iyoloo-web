@@ -38,7 +38,7 @@ export default function FollowingList() {
   };
 
   return (
-    <div className="min-h-screen w-full">
+    <div className="min-h-screen w-full min-w-0">
       {/* Navigation */}
       <div className="flex items-center gap-3 px-6 py-4">
         <button className="flex items-center" onClick={handleBackClick}>

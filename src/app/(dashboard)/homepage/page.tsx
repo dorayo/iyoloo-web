@@ -268,7 +268,7 @@ export default function PersonalCenter() {
   const albumImages = albumsData?.albums?.map((album) => album.url) || [];
 
   return (
-    <div className="flex flex-1 flex-col gap-5">
+    <div className="flex flex-1 flex-col gap-5 min-w-0 w-full">
       {/* Back Navigation */}
       <div className="flex items-center">
         {/* <img src="/api/placeholder/9/15" alt="back" className="w-2.5 h-4" /> */}

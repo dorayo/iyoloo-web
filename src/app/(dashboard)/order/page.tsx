@@ -52,7 +52,7 @@ export default function OrderContent() {
   };
 
   return (
-    <div className="min-h-screen w-full p-4">
+    <div className="min-h-screen w-full min-w-0 p-4">
       {/* Navigation */}
       <div className="mb-6 flex items-center gap-3">
         <button className="flex items-center" onClick={handleBackClick}>
