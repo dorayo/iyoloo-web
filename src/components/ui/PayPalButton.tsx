@@ -40,7 +40,7 @@ export const PayPalButton = ({
   const completePayment = api.payment.completePayment.useMutation();
 
   const initialOptions = {
-    clientId: process.env.PayPalClientId!,
+    clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!,
     currency: "USD",
     intent: "capture",
     // components: "buttons",

@@ -26,7 +26,7 @@ async function getPayPalAccessToken(): Promise<string> {
   const auth = Buffer.from(
     `${env.PAYPAL_CLIENT_ID}:${env.PAYPAL_CLIENT_SECRET}`,
   ).toString("base64");
-
+  console.log('token',env.PAYPAL_API_URL,env.PAYPAL_CLIENT_ID,env.PAYPAL_CLIENT_SECRET)
   const response = await fetch(`${env.PAYPAL_API_URL}/v1/oauth2/token`, {
     method: "POST",
     headers: {
@@ -35,7 +35,6 @@ async function getPayPalAccessToken(): Promise<string> {
     },
     body: "grant_type=client_credentials",
   });
-
   if (!response.ok) {
     throw new Error("Failed to get PayPal access token");
   }
@@ -74,6 +73,7 @@ export async function verifyPayPalPayment(
     }
 
     const order = await response.json();
+    console.log('支付',response,order)
 
     // 基础验证
     if (!order?.id || !order.status) {

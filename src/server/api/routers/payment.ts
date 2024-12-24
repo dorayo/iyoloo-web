@@ -7,6 +7,8 @@ import {
   iRecordGoldCoin,
   iRecordTranslate,
   iUser,
+  iUserAccount,
+  iRecordBill
 } from "~/server/db/schema";
 import { verifyPayPalPayment } from "~/hooks/paypal";
 import { eq } from "drizzle-orm";
@@ -116,7 +118,7 @@ export const paymentRouter = createTRPCRouter({
           input.paypalOrderId,
           input.expectedAmount,
         );
-
+        console.log("PayPal payment verification result:", verificationResult);
         if (!verificationResult.verified) {
           throw new TRPCError({
             code: "BAD_REQUEST",
@@ -148,7 +150,7 @@ export const paymentRouter = createTRPCRouter({
             where: eq(iRecordTranslate.orderNo, input.orderNo),
           });
         }
-
+        console.log("order:", order);
         if (!order) {
           throw new TRPCError({
             code: "NOT_FOUND",
@@ -156,7 +158,7 @@ export const paymentRouter = createTRPCRouter({
           });
         }
 
-        if (order.status !== 0) {
+        if (order?.status !== 0) {
           throw new TRPCError({
             code: "BAD_REQUEST",
             message: "订单状态异常",
@@ -164,43 +166,136 @@ export const paymentRouter = createTRPCRouter({
         }
 
         // 3. 调用对应的充值逻辑
-        if (input.productType === "vip" || input.productType === "svip") {
-          await rechargeRouter.rechargeVip.call({
-            ctx,
-            input: {
-              orderNo: input.orderNo,
-              vipLevel: order.vipLevel,
-              month: order.month,
-              amount: verificationResult.amount,
-              paypalOrderId: input.paypalOrderId,
-            },
-          });
-        } else if (input.productType === "goldCoin") {
-          await rechargeRouter.rechargeGoldCoin.call({
-            ctx,
-            input: {
-              orderNo: input.orderNo,
-              goldCoin: order.goldCoin,
-              amount: verificationResult.amount,
-              paypalOrderId: input.paypalOrderId,
-            },
-          });
-        } else if (input.productType === "translate") {
-          await rechargeRouter.rechargeTranslate.call({
-            ctx,
-            input: {
-              orderNo: input.orderNo,
-              character: order.characterNum,
-              amount: verificationResult.amount,
-              paypalOrderId: input.paypalOrderId,
-            },
-          });
-        }
+        // if (input.productType === "vip" || input.productType === "svip") {
+        //   await rechargeRouter.rechargeVip.call({
+        //     ctx,
+        //     input: {
+        //       orderNo: input.orderNo,
+        //       vipLevel: order.vipLevel,
+        //       month: order.month,
+        //       amount: verificationResult.amount,
+        //       paypalOrderId: input.paypalOrderId,
+        //     },
+        //   });
+        // } else if (input.productType === "goldCoin") {
+        //   await rechargeRouter.rechargeGoldCoin.call({
+        //     ctx,
+        //     input: {
+        //       orderNo: input.orderNo,
+        //       goldCoin: order.goldCoin,
+        //       amount: verificationResult.amount,
+        //       paypalOrderId: input.paypalOrderId,
+        //     },
+        //   });
+        // } else if (input.productType === "translate") {
+        //   await rechargeRouter.rechargeTranslate.call({
+        //     ctx,
+        //     input: {
+        //       orderNo: input.orderNo,
+        //       character: order.characterNum,
+        //       amount: verificationResult.amount,
+        //       paypalOrderId: input.paypalOrderId,
+        //     },
+        //   });
+        // }
 
-        return {
-          success: true,
-          verificationResult,
-        };
+        // return {
+        //   success: true,
+        //   verificationResult,
+        // };
+
+
+        // 3. 开始事务处理
+        return await ctx.db.transaction(async (tx) => {
+          // 获取用户账户
+          const userAccount = await tx.query.iUserAccount.findFirst({
+            where: eq(iUserAccount.userId, order.buyUserId)
+          });
+
+          if (!userAccount) {
+            throw new TRPCError({
+              code: "NOT_FOUND",
+              message: "User account not found"
+            });
+          }
+
+          // 根据产品类型执行不同的充值逻辑
+          if (input.productType === 'vip' || input.productType === 'svip') {
+            const vipLevel = input.productType === 'vip' ? 1 : 2;
+            const newExpiration = new Date();
+            newExpiration.setMonth(newExpiration.getMonth() + order.month);
+            
+            await tx.update(iUserAccount)
+              .set({
+                vipLevel: vipLevel,
+                vipOpen: new Date(),
+                vipExpiration: newExpiration,
+                vipCharacter: vipLevel === 1 ? 200 : 800,
+                totalAmount: (Number(userAccount.totalAmount) + verificationResult.amount).toString()
+              })
+              .where(eq(iUserAccount.userId, order.buyUserId));
+
+              await tx.update(iRecordVip)
+              .set({
+                status: 2,
+                payTime: new Date(),
+              })
+              .where(eq(iRecordVip.orderNo, input.orderNo));
+
+          } else if (input.productType === 'goldCoin') {
+            await tx.update(iUserAccount)
+              .set({
+                goldCoin: (Number(userAccount.goldCoin) + Number(order.goldCoin)).toString(),
+                totalAmount: (Number(userAccount.totalAmount) + verificationResult.amount).toString()
+              })
+              .where(eq(iUserAccount.userId, order.buyUserId));
+
+              await tx.update(iRecordGoldCoin)
+              .set({
+                status: 2,
+                payTime: new Date(),
+              })
+              .where(eq(iRecordGoldCoin.orderNo, input.orderNo));
+
+          }else if (input.productType === "translate") {
+              await tx.update(iUserAccount)
+              .set({
+                character: Number(userAccount.character) + Number(order.characterNum),
+                totalAmount: (Number(userAccount.totalAmount) + verificationResult.amount).toString()
+              })
+              .where(eq(iUserAccount.userId, order.buyUserId));
+
+              await tx.update(iRecordTranslate)
+              .set({
+                status: 2,
+                payTime: new Date(),
+              })
+              .where(eq(iRecordTranslate.orderNo, input.orderNo));
+          }
+
+          // 记录账单
+          await tx.insert(iRecordBill as any).values({
+            userId: order.buyUserId,
+            type: 1,
+            typeCode: input.productType === 'vip' ? 20 : 
+                      input.productType === 'goldCoin' ? 10 : 30,
+            accountChange: input.productType === 'vip' ? `购买${order.month}个月会员` :
+                          input.productType === 'goldCoin' ? `充值${order.goldCoin}金币` :
+                          `充值${order.characterNum}个翻译字符`,
+            sign: 1,
+            amount: verificationResult.amount.toString(),
+            recordId: order.id,
+            otherUserId: 0,
+            aUserId: 0,
+            rate: 0,
+            commission: 0,
+          });
+
+          return {
+            success: true,
+            verificationResult
+          };
+        });
       } catch (error) {
         console.error("支付完成处理失败:", error);
         throw error;

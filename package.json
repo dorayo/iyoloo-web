@@ -24,6 +24,7 @@
     "@clerk/nextjs": "^6.4.0",
     "@iamtraction/google-translate": "^2.0.1",
     "@napi-rs/pinyin": "^1.7.5",
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "@paypal/react-paypal-js": "^8.7.0",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.2",
