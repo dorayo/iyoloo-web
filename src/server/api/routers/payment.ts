@@ -12,7 +12,6 @@ import {
 } from "~/server/db/schema";
 import { verifyPayPalPayment } from "~/hooks/paypal";
 import { eq } from "drizzle-orm";
-import { rechargeRouter } from "~/server/api/routers/recharge";
 // 生成唯一订单号
 const generateOrderNo = () => {
   return `${Date.now()}${Math.floor(Math.random() * 1000)
