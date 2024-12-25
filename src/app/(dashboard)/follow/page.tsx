@@ -81,7 +81,7 @@ export default function FollowingList() {
                     <div className="relative w-full">
                       <img
                         src={
-                          user?.fansUser?.avatar ||
+                          user?.user?.avatar ||
                           "/images/dd864e07b4202526dabaa469ed0e75ab.png"
                         }
                         className="aspect-square w-full object-cover"
@@ -94,27 +94,27 @@ export default function FollowingList() {
                         <div className="space-y-2">
                           <div className="flex items-center gap-2">
                             <span className="text-sm font-bold">
-                              {user.fansUser?.nickname}
+                              {user.user?.nickname}
                             </span>
                             <div
-                              className={`text-xs ${user.fansUser?.onlineState ? "border border-green-500 text-green-500" : "bg-gray-200 text-gray-500"} rounded-full px-2 py-0.5`}
+                              className={`text-xs ${user.user?.onlineState ? "border border-green-500 text-green-500" : "bg-gray-200 text-gray-500"} rounded-full px-2 py-0.5`}
                             >
-                              {user.fansUser?.onlineState ? "在线" : "离线"}
+                              {user.user?.onlineState ? "在线" : "离线"}
                             </div>
                           </div>
 
                           <div className="flex items-center gap-2 text-xs text-gray-500">
                             <img
                               src={
-                                user.fansUser?.userInfo?.gender == 0
+                                user.user?.userInfo?.gender == 0
                                   ? "/images/a59df0715ec3aa8ddd267014c5e4494f.png"
-                                  : user.fansUser?.userInfo?.gender == 1
+                                  : user.user?.userInfo?.gender == 1
                                     ? "/images/e3be6ddebcee5c13b9051ed628117cd3.png"
                                     : "37b9b5249a60d6352f80d52d8eee480f.png"
                               }
                               className="h-4 w-4"
                             />
-                            <span>{user.fansUser?.regionName}</span>
+                            <span>{user.user?.regionName}</span>
                             {/* <span>{user.fansUser?.distance}km</span> */}
                           </div>
                         </div>

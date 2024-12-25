@@ -12,7 +12,7 @@ export const createTRPCContext = async (opts: { headers: Headers }) => {
   const session = auth();
   const { userId } = await auth();
 
-  // console.log('session', session,userId)
+  console.log('session', session,userId)
 
   return {
     db,

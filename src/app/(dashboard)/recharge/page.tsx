@@ -23,7 +23,6 @@ interface PaymentOption {
 const PricingPage = () => {
   const { toast } = useToast();
 
-  const params = useParams();
   const searchParams = useSearchParams();
   const type1 = searchParams.get("type");
   const initialType = type1 ? parseInt(type1, 10) : 1;

@@ -43,12 +43,12 @@ export const relationRouter = createTRPCRouter({
       // 获取关注列表
       const follows = await ctx.db.query.iUserFans.findMany({
         where: and(
-          eq(iUserFans.userId, userId),
+          eq(iUserFans.fansUserId, userId),
           eq(iUserFans.type, 1),
           eq(iUserFans.isDelete, 0),
         ),
         with: {
-          fansUser: {
+          user: {
             columns: {
               id: true,
               nickname: true,
@@ -72,7 +72,7 @@ export const relationRouter = createTRPCRouter({
       });
       // 获取所有需要的region IDs
       const regionIds = follows
-        .map((follow) => follow?.fansUser?.region)
+        .map((follow) => follow?.user?.region)
         .filter(Boolean)
         .map(Number);
 
@@ -99,10 +99,10 @@ export const relationRouter = createTRPCRouter({
       // 转换数据，添加region名称
       const enrichedFans = follows.map((follow) => ({
         ...follow,
-        fansUser: {
-          ...follow.fansUser,
-          regionName: follow?.fansUser?.region
-            ? regionMap[follow?.fansUser?.region]
+        user: {
+          ...follow.user,
+          regionName: follow?.user?.region
+            ? regionMap[follow?.user?.region]
             : undefined,
         },
       }));
@@ -157,12 +157,12 @@ export const relationRouter = createTRPCRouter({
 
       const fans = await ctx.db.query.iUserFans.findMany({
         where: and(
-          eq(iUserFans.fansUserId, userId),
+          eq(iUserFans.userId, userId),
           eq(iUserFans.type, 1),
           eq(iUserFans.isDelete, 0),
         ),
         with: {
-          user: {
+          fansUser: {
             columns: {
               id: true,
               nickname: true,
@@ -187,7 +187,7 @@ export const relationRouter = createTRPCRouter({
 
       // 获取所有需要的region IDs
       const regionIds = fans
-        .map((fan) => fan?.user?.region)
+        .map((fan) => fan?.fansUser?.region)
         .filter(Boolean)
         .map(Number);
 
@@ -214,9 +214,9 @@ export const relationRouter = createTRPCRouter({
       // 转换数据，添加region名称
       const enrichedFans = fans.map((fan) => ({
         ...fan,
-        user: {
-          ...fan.user,
-          regionName: fan?.user?.region ? regionMap[fan.user.region] : undefined,
+        fansUser: {
+          ...fan.fansUser,
+          regionName: fan?.fansUser?.region ? regionMap[fan.fansUser.region] : undefined,
         },
       }));
 

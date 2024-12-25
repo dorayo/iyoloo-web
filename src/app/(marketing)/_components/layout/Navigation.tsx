@@ -87,7 +87,7 @@ const Navigation = () => {
             <LanguageSwitcher />
             {!(user?.clerkId) && (
               <button
-                onClick={handleLoginClick}
+                onClick={handleStartNowClick}
                 className="transform rounded-full border border-white/10 px-5 py-2.5 text-sm font-medium text-white/90 backdrop-blur-sm transition-all duration-200 hover:bg-white/10 active:scale-95"
               >
                 Sign In

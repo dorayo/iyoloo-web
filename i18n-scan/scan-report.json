@@ -1,0 +1,2496 @@
+{
+  "scanTime": "2024-12-23T10:59:43.976Z",
+  "statistics": {
+    "totalFiles": 70,
+    "totalStrings": 351,
+    "filesWithChinese": [
+      "src/app/(dashboard)/visitor/page.tsx",
+      "src/app/(dashboard)/shopping/page.tsx",
+      "src/app/(dashboard)/recharge/page.tsx",
+      "src/app/(dashboard)/profile/page.tsx",
+      "src/app/(dashboard)/order/page.tsx",
+      "src/app/(dashboard)/meet/page.tsx",
+      "src/app/(dashboard)/mall/page.tsx",
+      "src/app/(dashboard)/homepage/page.tsx",
+      "src/app/(dashboard)/friend/page.tsx",
+      "src/app/(dashboard)/follow/page.tsx",
+      "src/app/(dashboard)/fans/page.tsx",
+      "src/app/(auth)/info/page.tsx",
+      "src/components/ui/PayPalButton.tsx",
+      "src/components/ui/LanguageSwitcher.tsx",
+      "src/components/ui/LanguageSelect.tsx",
+      "src/components/dashboard/sidebar.tsx",
+      "src/components/dashboard/header.tsx",
+      "src/components/dashboard/footer.tsx",
+      "src/components/chat/UserChatPanel.tsx",
+      "src/components/chat/SendCoinsModal.tsx",
+      "src/components/chat/NotificationsPanel.tsx",
+      "src/components/chat/MessagePanel.tsx",
+      "src/components/chat/MessageInput.tsx",
+      "src/components/chat/MessageBubble.tsx",
+      "src/components/chat/FriendRequestList.tsx",
+      "src/components/chat/CustomerChatPanel.tsx",
+      "src/components/chat/ContactPanel.tsx",
+      "src/components/chat/AnnouncementPanel.tsx"
+    ]
+  },
+  "itemsNeedingTranslation": [
+    {
+      "key": "common.labels.fanhui",
+      "chinese": "返回",
+      "files": [
+        "src/app/(dashboard)/visitor/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.wodefangke",
+      "chinese": "我的访客",
+      "files": [
+        "src/app/(dashboard)/visitor/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zanwufangke",
+      "chinese": "暂无访客",
+      "files": [
+        "src/app/(dashboard)/visitor/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.ranggengduorenfaxiannidemeilib",
+      "chinese": "让更多人发现你的魅力吧",
+      "files": [
+        "src/app/(dashboard)/visitor/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.online",
+      "chinese": "在线",
+      "files": [
+        "src/app/(dashboard)/visitor/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.offline",
+      "chinese": "离线",
+      "files": [
+        "src/app/(dashboard)/visitor/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.chakanzhuye",
+      "chinese": "查看主页",
+      "files": [
+        "src/app/(dashboard)/visitor/page.tsx"
+      ]
+    },
+    {
+      "key": "common.messages.dingdanchuangjiansuccess",
+      "chinese": "订单创建成功",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.messages.nindedingdanyisuccesschuangjia",
+      "chinese": "您的订单已成功创建",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.messages.dingdanchuangjianfail",
+      "chinese": "订单创建失败",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleasetianxiewanzhengxinxi",
+      "chinese": "请填写完整信息",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleasetianxieshouhuodizhihelia",
+      "chinese": "请填写收货地址和联系电话",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseselectshouhuoren",
+      "chinese": "请选择收货人",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseselectyaozengsongdehaoyo",
+      "chinese": "请选择要赠送的好友",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.jinbibuzu",
+      "chinese": "金币不足",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.nindejinbiyuebuzu",
+      "chinese": "您的金币余额不足",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.pleasechongzhi",
+      "chinese": "请充值",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fanhui",
+      "chinese": "返回",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.xiadan",
+      "chinese": "下单",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.selectshouhuoren",
+      "chinese": "选择收货人",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.songgeihaoyou",
+      "chinese": "送给好友",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.songgeiziji",
+      "chinese": "送给自己",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.selecthaoyou",
+      "chinese": "选择好友",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseselecthaoyou",
+      "chinese": "请选择好友",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shouhuodizhi",
+      "chinese": "收货地址",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseshurushouhuodizhi",
+      "chinese": "请输入收货地址",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.lianxidianhua",
+      "chinese": "联系电话",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseshurulianxidianhua",
+      "chinese": "请输入联系电话",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.jinbi",
+      "chinese": "金币",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.goumaishuliang",
+      "chinese": "购买数量",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseshuruzengyan",
+      "chinese": "请输入赠言",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.yingzhifu",
+      "chinese": "应支付",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.dangqianyue",
+      "chinese": "当前余额",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zhifufangshi",
+      "chinese": "支付方式",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.jinbizhifu",
+      "chinese": "金币支付",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.chulizhong",
+      "chinese": "处理中",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.confirmzhifu",
+      "chinese": "确认支付",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.confirmdingdan",
+      "chinese": "确认订单",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shangpinmingcheng",
+      "chinese": "商品名称",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shouhuofangshi",
+      "chinese": "收货方式",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zengsonghaoyou",
+      "chinese": "赠送好友",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zijishouhuo",
+      "chinese": "自己收货",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shouhuoren",
+      "chinese": "收货人",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zhifujine",
+      "chinese": "支付金额",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zengyan",
+      "chinese": "赠言",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.cancel",
+      "chinese": "取消",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.confirmxiadan",
+      "chinese": "确认下单",
+      "files": [
+        "src/app/(dashboard)/shopping/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.chongzhisuccess",
+      "chinese": "充值成功",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.chongzhifail",
+      "chinese": "充值失败",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaselianxikefu",
+      "chinese": "请联系客服",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.pleasezhongshi",
+      "chinese": "请重试",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fanhui",
+      "chinese": "返回",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shengjihuiyuan",
+      "chinese": "升级会员",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.jinbi",
+      "chinese": "金币",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fanyibao",
+      "chinese": "翻译包",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.mianfeiban",
+      "chinese": "免费版",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.jichutiyan",
+      "chinese": "基础体验",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.ren",
+      "chinese": "人",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.yue",
+      "chinese": "月",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.mianfeitiyan",
+      "chinese": "免费体验",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.mianfeifasongdongtai",
+      "chinese": "免费发送动态",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.meirimianfeifasong",
+      "chinese": "每日免费发送",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.tiaoxiaoxi",
+      "chinese": "条消息",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.tequantiyan",
+      "chinese": "特权体验",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.ninde",
+      "chinese": "您的",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.jiangyu",
+      "chinese": "将于",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.houdaoqi",
+      "chinese": "后到期",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zuidi",
+      "chinese": "最低",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.lijigoumai",
+      "chinese": "立即购买",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.kewuxianfasongbufanyixiaoxi",
+      "chinese": "可无限发送不翻译消息",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.meiyue",
+      "chinese": "每月",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.mianfeifanyizifu",
+      "chinese": "免费翻译字符",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.zaipengyouquankeyimianfeichaka",
+      "chinese": "在朋友圈可以免费查看",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.zhangmohutupian",
+      "chinese": "张模糊图片",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.xiedai",
+      "chinese": "携带",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.huiyuanbiaoshi",
+      "chinese": "会员标识",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zunguitiyan",
+      "chinese": "尊贵体验",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.mianfeifasongxiaoxi",
+      "chinese": "免费发送消息",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.kewuxianmianfeichakanpengyouqu",
+      "chinese": "可无限免费查看朋友圈的模糊图片",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.zhaodaoyizhimomoguanxinnideta",
+      "chinese": "找到一直默默关心你的他",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.ta",
+      "chinese": "她",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.chakanduifangshifouyiduxiaoxi",
+      "chinese": "查看对方是否已读消息",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.meitianmianfei",
+      "chinese": "每天免费",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.ci",
+      "chinese": "次",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zhinengpipei",
+      "chinese": "智能匹配",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.dangqiankeyongjinbi",
+      "chinese": "当前可用金币",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.ge",
+      "chinese": "个",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.dazhaohu",
+      "chinese": "打招呼",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.yongjinbihexinpengyoudazhaohu",
+      "chinese": "用金币和新朋友打招呼",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.kanzhaopian",
+      "chinese": "看照片",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.keyikanpengyouquanmohutupian",
+      "chinese": "可以看朋友圈模糊图片",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fanyiwenzi",
+      "chinese": "翻译文字",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.jinbifanyi",
+      "chinese": "金币翻译",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zifu",
+      "chinese": "字符",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fayuyin",
+      "chinese": "发语音",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.jinbifasongyitiaoyuyin",
+      "chinese": "金币发送一条语音",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.dangqiankeyongzifu",
+      "chinese": "当前可用字符",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fanyiliaotian",
+      "chinese": "翻译聊天",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.fanyiliaotianduihua",
+      "chinese": "翻译聊天对话",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.yuyinzhuanwenzi",
+      "chinese": "语音转文字",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.yuyinzhuanwenzibingqiefanyi",
+      "chinese": "语音转文字并且翻译",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.fanyipengyouquan",
+      "chinese": "翻译朋友圈",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.fanyipengyouquanwenan",
+      "chinese": "翻译朋友圈文案",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.chongzhiguige",
+      "chinese": "充值规格",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.geyue",
+      "chinese": "个月",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zhifufangshi",
+      "chinese": "支付方式",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.confirmchongzhi",
+      "chinese": "确认充值",
+      "files": [
+        "src/app/(dashboard)/recharge/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shangchuanzhong",
+      "chinese": "上传中",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.zhengzaichulitouxiangshangchua",
+      "chinese": "正在处理头像上传",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseselecttupianwenjian",
+      "chinese": "请选择图片文件",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.tupiandaxiaobunengchaoguo",
+      "chinese": "图片大小不能超过",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shangchuanfail",
+      "chinese": "上传失败",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shangchuansuccess",
+      "chinese": "上传成功",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.touxiangyigengxin",
+      "chinese": "头像已更新",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.pleasezhongshi",
+      "chinese": "请重试",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fanhui",
+      "chinese": "返回",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.gerenxinxi",
+      "chinese": "个人信息",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.touxiang",
+      "chinese": "头像",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.nicheng",
+      "chinese": "昵称",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.youxiang",
+      "chinese": "邮箱",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shengri",
+      "chinese": "生日",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.nian",
+      "chinese": "年",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.yue",
+      "chinese": "月",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.ri",
+      "chinese": "日",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.xingbie",
+      "chinese": "性别",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.nan",
+      "chinese": "男",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.n",
+      "chinese": "女",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zhiye",
+      "chinese": "职业",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseselectzhiye",
+      "chinese": "请选择职业",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.diqu",
+      "chinese": "地区",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseselectdiqu",
+      "chinese": "请选择地区",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.yuyan",
+      "chinese": "语言",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseselectyuyan",
+      "chinese": "请选择语言",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shengao",
+      "chinese": "身高",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.tizhong",
+      "chinese": "体重",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.gerenjieshao",
+      "chinese": "个人介绍",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.xingquaihao",
+      "chinese": "兴趣爱好",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.cancel",
+      "chinese": "取消",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.baocunzhong",
+      "chinese": "保存中",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.baocun",
+      "chinese": "保存",
+      "files": [
+        "src/app/(dashboard)/profile/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.daizhifu",
+      "chinese": "待支付",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.chulizhong",
+      "chinese": "处理中",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.yiwancheng",
+      "chinese": "已完成",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.yicancel",
+      "chinese": "已取消",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.weizhizhuangtai",
+      "chinese": "未知状态",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fanhui",
+      "chinese": "返回",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.wodedingdan",
+      "chinese": "我的订单",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.wogoumaide",
+      "chinese": "我购买的",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.woshoudaode",
+      "chinese": "我收到的",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.zanwudingdanjilu",
+      "chinese": "暂无订单记录",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.xiadanshijian",
+      "chinese": "下单时间",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zengyan",
+      "chinese": "赠言",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.jinbi",
+      "chinese": "金币",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shouhuoren",
+      "chinese": "收货人",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zengsongren",
+      "chinese": "赠送人",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shangyiye",
+      "chinese": "上一页",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.xiayiye",
+      "chinese": "下一页",
+      "files": [
+        "src/app/(dashboard)/order/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.pleaseshaodeng",
+      "chinese": "请稍等",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.pipeizhong",
+      "chinese": "匹配中",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.zhinengpipeizhong",
+      "chinese": "智能匹配中",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.pipeisuccess",
+      "chinese": "匹配成功",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.jinruzhuye",
+      "chinese": "进入主页",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.jixupipei",
+      "chinese": "继续匹配",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fanhuishouye",
+      "chinese": "返回首页",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleasemingtianjixu",
+      "chinese": "请明天继续",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.jinripipeicishuyongwan",
+      "chinese": "今日匹配次数用完",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.kaishipipei",
+      "chinese": "开始匹配",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zhinengcesuan",
+      "chinese": "智能测算",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.jiaru",
+      "chinese": "加入",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.huoqupipeicishu",
+      "chinese": "获取匹配次数",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.yudaoyunipipeidenageren",
+      "chinese": "遇到与你匹配的那个人",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.jinrishengyupipeicishu",
+      "chinese": "今日剩余匹配次数",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.ci",
+      "chinese": "次",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.cishuyiyongwan",
+      "chinese": "次数已用完",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.pipeifail",
+      "chinese": "匹配失败",
+      "files": [
+        "src/app/(dashboard)/meet/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.goumai",
+      "chinese": "购买",
+      "files": [
+        "src/app/(dashboard)/mall/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shangchuanzhong",
+      "chinese": "上传中",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.zhengzaishangchuanxiangcetupia",
+      "chinese": "正在上传相册图片",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseselecttupianwenjian",
+      "chinese": "请选择图片文件",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.tupiandaxiaobunengchaoguo",
+      "chinese": "图片大小不能超过",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shangchuanfail",
+      "chinese": "上传失败",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.shangchuansuccess",
+      "chinese": "上传成功",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.xiangceyigengxin",
+      "chinese": "相册已更新",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.pleasezhongshi",
+      "chinese": "请重试",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fanhui",
+      "chinese": "返回",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.wodezhuye",
+      "chinese": "我的主页",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.gerenjieshao",
+      "chinese": "个人介绍",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.wodexiangce",
+      "chinese": "我的相册",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.tianjiazhaopian",
+      "chinese": "添加照片",
+      "files": [
+        "src/app/(dashboard)/homepage/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fanhui",
+      "chinese": "返回",
+      "files": [
+        "src/app/(dashboard)/friend/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.wodehaoyou",
+      "chinese": "我的好友",
+      "files": [
+        "src/app/(dashboard)/friend/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zanwuhaoyou",
+      "chinese": "暂无好友",
+      "files": [
+        "src/app/(dashboard)/friend/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.lairenshigengduozhitongdaohede",
+      "chinese": "来认识更多志同道合的朋友吧",
+      "files": [
+        "src/app/(dashboard)/friend/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.online",
+      "chinese": "在线",
+      "files": [
+        "src/app/(dashboard)/friend/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.offline",
+      "chinese": "离线",
+      "files": [
+        "src/app/(dashboard)/friend/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fanhui",
+      "chinese": "返回",
+      "files": [
+        "src/app/(dashboard)/follow/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.wodeguanzhu",
+      "chinese": "我的关注",
+      "files": [
+        "src/app/(dashboard)/follow/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zanwuguanzhu",
+      "chinese": "暂无关注",
+      "files": [
+        "src/app/(dashboard)/follow/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.qufaxiangengduoyouquderenba",
+      "chinese": "去发现更多有趣的人吧",
+      "files": [
+        "src/app/(dashboard)/follow/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.online",
+      "chinese": "在线",
+      "files": [
+        "src/app/(dashboard)/follow/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.offline",
+      "chinese": "离线",
+      "files": [
+        "src/app/(dashboard)/follow/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.fanhui",
+      "chinese": "返回",
+      "files": [
+        "src/app/(dashboard)/fans/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.wodefensi",
+      "chinese": "我的粉丝",
+      "files": [
+        "src/app/(dashboard)/fans/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.zanwufensi",
+      "chinese": "暂无粉丝",
+      "files": [
+        "src/app/(dashboard)/fans/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.jixujiayou",
+      "chinese": "继续加油",
+      "files": [
+        "src/app/(dashboard)/fans/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.tishengzijidemeilizhiba",
+      "chinese": "提升自己的魅力值吧",
+      "files": [
+        "src/app/(dashboard)/fans/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.online",
+      "chinese": "在线",
+      "files": [
+        "src/app/(dashboard)/fans/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.offline",
+      "chinese": "离线",
+      "files": [
+        "src/app/(dashboard)/fans/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.gerenxinxiyigengxin",
+      "chinese": "个人信息已更新",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseselectxingbie",
+      "chinese": "请选择性别",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseselectshengri",
+      "chinese": "请选择生日",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "common.validation.pleaseselectyuyan",
+      "chinese": "请选择语言",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.gerenxinxi",
+      "chinese": "个人信息",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.woshinanxing",
+      "chinese": "我是男性",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.woshinxing",
+      "chinese": "我是女性",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.nian",
+      "chinese": "年",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.yue",
+      "chinese": "月",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.ri",
+      "chinese": "日",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.selectyuyan",
+      "chinese": "选择语言",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "common.labels.submitzhong",
+      "chinese": "提交中",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "common.content.quxunzhaonidepengyouba",
+      "chinese": "去寻找你的朋友吧",
+      "files": [
+        "src/app/(auth)/info/page.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.zhifufail",
+      "chinese": "支付失败",
+      "files": [
+        "src/components/ui/PayPalButton.tsx"
+      ]
+    },
+    {
+      "key": "components.messages.chulizhifushifashengerror",
+      "chinese": "处理支付时发生错误",
+      "files": [
+        "src/components/ui/PayPalButton.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.pleasezhongshi",
+      "chinese": "请重试",
+      "files": [
+        "src/components/ui/PayPalButton.tsx"
+      ]
+    },
+    {
+      "key": "components.messages.buhuozhifufail",
+      "chinese": "捕获支付失败",
+      "files": [
+        "src/components/ui/PayPalButton.tsx"
+      ]
+    },
+    {
+      "key": "components.content.weihuoqudaodingdanxinxi",
+      "chinese": "未获取到订单信息",
+      "files": [
+        "src/components/ui/PayPalButton.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.zhifusuccess",
+      "chinese": "支付成功",
+      "files": [
+        "src/components/ui/PayPalButton.tsx"
+      ]
+    },
+    {
+      "key": "components.content.nindegoumaiyiwancheng",
+      "chinese": "您的购买已完成",
+      "files": [
+        "src/components/ui/PayPalButton.tsx"
+      ]
+    },
+    {
+      "key": "components.content.zhifuyicancel",
+      "chinese": "支付已取消",
+      "files": [
+        "src/components/ui/PayPalButton.tsx"
+      ]
+    },
+    {
+      "key": "components.content.nincancellebencizhifu",
+      "chinese": "您取消了本次支付",
+      "files": [
+        "src/components/ui/PayPalButton.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jiantizhongwen",
+      "chinese": "简体中文",
+      "files": [
+        "src/components/ui/LanguageSwitcher.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jiantizhongwen",
+      "chinese": "简体中文",
+      "files": [
+        "src/components/ui/LanguageSelect.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.guanzhu",
+      "chinese": "关注",
+      "files": [
+        "src/components/dashboard/sidebar.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.fensi",
+      "chinese": "粉丝",
+      "files": [
+        "src/components/dashboard/sidebar.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.haoyou",
+      "chinese": "好友",
+      "files": [
+        "src/components/dashboard/sidebar.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jinbi",
+      "chinese": "金币",
+      "files": [
+        "src/components/dashboard/sidebar.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.fanyibao",
+      "chinese": "翻译包",
+      "files": [
+        "src/components/dashboard/sidebar.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.haoyoushenplease",
+      "chinese": "好友申请",
+      "files": [
+        "src/components/dashboard/sidebar.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.wodexiaoxi",
+      "chinese": "我的消息",
+      "files": [
+        "src/components/dashboard/sidebar.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.wodefangke",
+      "chinese": "我的访客",
+      "files": [
+        "src/components/dashboard/sidebar.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.wodezhanghu",
+      "chinese": "我的账户",
+      "files": [
+        "src/components/dashboard/sidebar.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.wodedingdan",
+      "chinese": "我的订单",
+      "files": [
+        "src/components/dashboard/sidebar.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.ouyu",
+      "chinese": "偶遇",
+      "files": [
+        "src/components/dashboard/header.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.shangcheng",
+      "chinese": "商城",
+      "files": [
+        "src/components/dashboard/header.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.pleaseshuruninyaosousuodeyongh",
+      "chinese": "请输入您要搜索的用户",
+      "files": [
+        "src/components/dashboard/header.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.guanyuwomen",
+      "chinese": "关于我们",
+      "files": [
+        "src/components/dashboard/footer.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jiaoyouanquan",
+      "chinese": "交友安全",
+      "files": [
+        "src/components/dashboard/footer.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.yinsitiaokuan",
+      "chinese": "隐私条款",
+      "files": [
+        "src/components/dashboard/footer.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.bangzhuzhongxin",
+      "chinese": "帮助中心",
+      "files": [
+        "src/components/dashboard/footer.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.yu",
+      "chinese": "豫",
+      "files": [
+        "src/components/dashboard/footer.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.bei",
+      "chinese": "备",
+      "files": [
+        "src/components/dashboard/footer.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.hao",
+      "chinese": "号",
+      "files": [
+        "src/components/dashboard/footer.tsx"
+      ]
+    },
+    {
+      "key": "components.content.qitashebeiyilogin",
+      "chinese": "其他设备已登录",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.loginyiguoqi",
+      "chinese": "登录已过期",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.pleasezhongxinlogin",
+      "chinese": "请重新登录",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.yuebuzu",
+      "chinese": "余额不足",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.pleasechongzhihoujixushiyong",
+      "chinese": "请充值后继续使用",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.fasongfail",
+      "chinese": "发送失败",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.pleasezhongshi",
+      "chinese": "请重试",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.buzhichidewenjianleixing",
+      "chinese": "不支持的文件类型",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.pleaseselecttupianwenjian",
+      "chinese": "请选择图片文件",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.wenjianguoda",
+      "chinese": "文件过大",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.tupiandaxiaobunengchaoguo",
+      "chinese": "图片大小不能超过",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.shangchuanfail",
+      "chinese": "上传失败",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.fasongle",
+      "chinese": "发送了",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jinbi",
+      "chinese": "金币",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.fasongsuccess",
+      "chinese": "发送成功",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.successxiang",
+      "chinese": "成功向",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.fasong",
+      "chinese": "发送",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.online",
+      "chinese": "在线",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.offline",
+      "chinese": "离线",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jiantizhongwen",
+      "chinese": "简体中文",
+      "files": [
+        "src/components/chat/UserChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.wuxiaojine",
+      "chinese": "无效金额",
+      "files": [
+        "src/components/chat/SendCoinsModal.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.pleaseshuruyouxiaodejinbishuli",
+      "chinese": "请输入有效的金币数量",
+      "files": [
+        "src/components/chat/SendCoinsModal.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.yuebuzu",
+      "chinese": "余额不足",
+      "files": [
+        "src/components/chat/SendCoinsModal.tsx"
+      ]
+    },
+    {
+      "key": "components.content.nindejinbiyuebuzu",
+      "chinese": "您的金币余额不足",
+      "files": [
+        "src/components/chat/SendCoinsModal.tsx"
+      ]
+    },
+    {
+      "key": "components.content.zengsongjinbigeiwo",
+      "chinese": "赠送金币给我",
+      "files": [
+        "src/components/chat/SendCoinsModal.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jinbi",
+      "chinese": "金币",
+      "files": [
+        "src/components/chat/SendCoinsModal.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.qitajine",
+      "chinese": "其他金额",
+      "files": [
+        "src/components/chat/SendCoinsModal.tsx"
+      ]
+    },
+    {
+      "key": "components.content.shuruzidingyijine",
+      "chinese": "输入自定义金额",
+      "files": [
+        "src/components/chat/SendCoinsModal.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.zengsongjinbi",
+      "chinese": "赠送金币",
+      "files": [
+        "src/components/chat/SendCoinsModal.tsx"
+      ]
+    },
+    {
+      "key": "components.content.dangqiankeyongjinbi",
+      "chinese": "当前可用金币",
+      "files": [
+        "src/components/chat/SendCoinsModal.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.quchongzhi",
+      "chinese": "去充值",
+      "files": [
+        "src/components/chat/SendCoinsModal.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.guanzhulenin",
+      "chinese": "关注了您",
+      "files": [
+        "src/components/chat/NotificationsPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.pinglunlenindedongtai",
+      "chinese": "评论了您的动态",
+      "files": [
+        "src/components/chat/NotificationsPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.dianzanlenindedongtai",
+      "chinese": "点赞了您的动态",
+      "files": [
+        "src/components/chat/NotificationsPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.fangwenlenindezhuye",
+      "chinese": "访问了您的主页",
+      "files": [
+        "src/components/chat/NotificationsPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.hudongtongzhi",
+      "chinese": "互动通知",
+      "files": [
+        "src/components/chat/NotificationsPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jiazaizhong",
+      "chinese": "加载中",
+      "files": [
+        "src/components/chat/NotificationsPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.meiyougengduotongzhile",
+      "chinese": "没有更多通知了",
+      "files": [
+        "src/components/chat/NotificationsPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.zanwutongzhi",
+      "chinese": "暂无通知",
+      "files": [
+        "src/components/chat/NotificationsPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.haoyoushenplease",
+      "chinese": "好友申请",
+      "files": [
+        "src/components/chat/MessagePanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.gonggao",
+      "chinese": "公告",
+      "files": [
+        "src/components/chat/MessagePanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.hudongtongzhi",
+      "chinese": "互动通知",
+      "files": [
+        "src/components/chat/MessagePanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.zhuanshukefu",
+      "chinese": "专属客服",
+      "files": [
+        "src/components/chat/MessagePanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.pleaseshuru",
+      "chinese": "请输入",
+      "files": [
+        "src/components/chat/MessageInput.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jinbi",
+      "chinese": "金币",
+      "files": [
+        "src/components/chat/MessageBubble.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.zengsong",
+      "chinese": "赠送",
+      "files": [
+        "src/components/chat/MessageBubble.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.haoyoushenpleaseyitongguo",
+      "chinese": "好友申请已通过",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.yijujuehaoyoushenplease",
+      "chinese": "已拒绝好友申请",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.caozuofail",
+      "chinese": "操作失败",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.messages.jiazaihaoyoushenpleasefail",
+      "chinese": "加载好友申请失败",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.zhongxinjiazai",
+      "chinese": "重新加载",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.haoyoushenplease",
+      "chinese": "好友申请",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.zanwuxindehaoyoushenplease",
+      "chinese": "暂无新的好友申请",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jujue",
+      "chinese": "拒绝",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.tongguo",
+      "chinese": "通过",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.gong",
+      "chinese": "共",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.tiaohaoyoushenplease",
+      "chinese": "条好友申请",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.dangqianxianshi",
+      "chinese": "当前显示",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.tiao",
+      "chinese": "条",
+      "files": [
+        "src/components/chat/FriendRequestList.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.zhuanshukefu",
+      "chinese": "专属客服",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.qitashebeiyilogin",
+      "chinese": "其他设备已登录",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.loginyiguoqi",
+      "chinese": "登录已过期",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.pleasezhongxinlogin",
+      "chinese": "请重新登录",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.yuebuzu",
+      "chinese": "余额不足",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.pleasechongzhihoujixushiyong",
+      "chinese": "请充值后继续使用",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.fasongfail",
+      "chinese": "发送失败",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.pleasezhongshi",
+      "chinese": "请重试",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.buzhichidewenjianleixing",
+      "chinese": "不支持的文件类型",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.pleaseselecttupianwenjian",
+      "chinese": "请选择图片文件",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.wenjianguoda",
+      "chinese": "文件过大",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.tupiandaxiaobunengchaoguo",
+      "chinese": "图片大小不能超过",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.shangchuanfail",
+      "chinese": "上传失败",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.pleaseshurunindewenti",
+      "chinese": "请输入您的问题",
+      "files": [
+        "src/components/chat/CustomerChatPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.quanbuhaoyou",
+      "chinese": "全部好友",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.onlinehaoyou",
+      "chinese": "在线好友",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.haoyou",
+      "chinese": "好友",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.jiazaihaoyouliebiao",
+      "chinese": "加载好友列表",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jiazaifail",
+      "chinese": "加载失败",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.wufahuoquhaoyouliebiao",
+      "chinese": "无法获取好友列表",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.validation.pleaseshaohouzhongshi",
+      "chinese": "请稍后重试",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.jiazaihaoyouliebiaochucuo",
+      "chinese": "加载好友列表出错",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.ninhaimeiyouhaoyou",
+      "chinese": "您还没有好友",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.kuaiqutianjiaba",
+      "chinese": "快去添加吧",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.fasongle",
+      "chinese": "发送了",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jinbi",
+      "chinese": "金币",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.fasongsuccess",
+      "chinese": "发送成功",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.successxiang",
+      "chinese": "成功向",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.fasongjinbi",
+      "chinese": "发送金币",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.fasongfail",
+      "chinese": "发送失败",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.sousuohaoyou",
+      "chinese": "搜索好友",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.tongxunlu",
+      "chinese": "通讯录",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.online",
+      "chinese": "在线",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.songjinbi",
+      "chinese": "送金币",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jinruzhuye",
+      "chinese": "进入主页",
+      "files": [
+        "src/components/chat/ContactPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.biaojifail",
+      "chinese": "标记失败",
+      "files": [
+        "src/components/chat/AnnouncementPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.gonggao",
+      "chinese": "公告",
+      "files": [
+        "src/components/chat/AnnouncementPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.jiazaizhong",
+      "chinese": "加载中",
+      "files": [
+        "src/components/chat/AnnouncementPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.content.zanwuxingonggao",
+      "chinese": "暂无新公告",
+      "files": [
+        "src/components/chat/AnnouncementPanel.tsx"
+      ]
+    },
+    {
+      "key": "components.labels.biaojiyidu",
+      "chinese": "标记已读",
+      "files": [
+        "src/components/chat/AnnouncementPanel.tsx"
+      ]
+    }
+  ]
+}
